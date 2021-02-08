@@ -5,7 +5,6 @@ const routes = require('./Routes');
 const server = require('http').Server(app);
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
-var createError = require('http-errors');
 
 const port = 5000;
 
@@ -16,13 +15,6 @@ app.use(cors({
     }
 }));
 
-// app.use(cors({
-//     origin: "http://localhost:5000",
-//     methods: "GET, PATCH, POST, DELETE",
-//     credentials: true,
-//     headers: "X-Requested-With,Content-Type, Accept, Authorization, Save-Data, Accept-Ranges"
-// }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -32,12 +24,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(routes);
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    next(createError(404));
-});
-
 
 // error handler
 app.use(function (err, req, res, next) {
