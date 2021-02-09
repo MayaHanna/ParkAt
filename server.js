@@ -1,19 +1,11 @@
 const express = require('express')
 const app = express();
-const cors = require('cors');
 const routes = require('./Routes');
 const server = require('http').Server(app);
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
 
 const port = 5000;
-
-app.use(cors({
-    credentials: true,
-    origin: (origin, callback) => {
-        callback(null, true);
-    }
-}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
