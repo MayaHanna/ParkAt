@@ -1,15 +1,17 @@
-const express = require('express')
+const express = require('express');
 const app = express();
 const routes = require('./Routes');
 const server = require('http').Server(app);
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var cors = require("cors");
 
 const port = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(cors());
 app.use(cookieParser());
 
 app.use(bodyParser.json());
@@ -27,4 +29,4 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
 });
 
-server.listen(port, () => console.log(`app listening on port ${port}!`))
+server.listen(port, () => console.log(`app listening on port ${port}!`));
