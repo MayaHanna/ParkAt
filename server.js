@@ -4,6 +4,7 @@ const routes = require('./Routes');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fs = require("fs");
+const sudoFs = require("@mh-cbon/sudo-fs");
 const cors = require("cors");
 
 
@@ -14,17 +15,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 let server;
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
-    console.log(__dirname + '/selfsigned.key');
-    const key = fs.readFileSync(__dirname + '/selfsigned.key', 'ascii');
-    const cert = fs.readFileSync(__dirname + '/selfsigned.crt', 'ascii');
-    const options = {
-        key: key,
-        cert: cert
-    };
-
-    server = require('https').Server(options, app);
+    sudoFs.readFile(__dirname + '/selfsigned.key', {}, function (err, data) {
+        const cert = fs.readFileSync(__dirname + '/selfsigned.crt');
+        const options = {
+            key: key,
+            cert: cert
+        };
+        server = require('https').Server(options, app);
+    });
 } else {
     server = require('http').Server(app);
 }
