@@ -17,8 +17,8 @@ let server;
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
     console.log(__dirname + '/selfsigned.key');
-    const key = fs.readFileSync(__dirname + '/selfsigned.key');
-    const cert = fs.readFileSync(__dirname + '/selfsigned.crt');
+    const key = fs.readFileSync(__dirname + '/selfsigned.key', 'ascii');
+    const cert = fs.readFileSync(__dirname + '/selfsigned.crt', 'ascii');
     const options = {
         key: key,
         cert: cert
