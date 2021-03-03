@@ -1,26 +1,31 @@
 const express = require('express');
 const app = express();
 const routes = require('./Routes');
-const server = require('http').Server(app);
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var cors = require("cors");
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const fs = require("fs");
+const cors = require("cors");
+
 
 const port = 5000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Add headers
-app.use(function (req, res, next) {
+let server;
+if (process.env.NODE_ENV === "production") {
+    const key = fs.readFileSync(__dirname + '/../certs/selfsigned.key');
+    const cert = fs.readFileSync(__dirname + '/../certs/selfsigned.crt');
+    const options = {
+        key: key,
+        cert: cert
+    };
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    next();
-});
+    server = require('https').Server(options, app);
+} else {
+    server = require('http').Server(app);
+}
 
 app.use(cookieParser());
 
