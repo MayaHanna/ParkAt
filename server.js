@@ -23,9 +23,11 @@ if (process.env.NODE_ENV === "production") {
             cert: cert
         };
         server = require('https').Server(options, app);
+        server.listen(port, () => console.log(`app listening on port ${port}!`));
     });
 } else {
     server = require('http').Server(app);
+    server.listen(port, () => console.log(`app listening on port ${port}!`));
 }
 
 app.use(cookieParser());
@@ -44,5 +46,3 @@ app.use(function (err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
 });
-
-server.listen(port, () => console.log(`app listening on port ${port}!`));
