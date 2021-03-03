@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
     sudoFs.readFile(__dirname + '/selfsigned.key', {}, function (err, data) {
         const cert = fs.readFileSync(__dirname + '/selfsigned.crt');
         const options = {
-            key: key,
+            key: data,
             cert: cert
         };
         server = require('https').Server(options, app);
