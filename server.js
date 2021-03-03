@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 let server;
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
     const key = fs.readFileSync(__dirname + '/../certs/selfsigned.key');
     const cert = fs.readFileSync(__dirname + '/../certs/selfsigned.crt');
