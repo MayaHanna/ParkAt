@@ -8,29 +8,13 @@ const sudoFs = require("@mh-cbon/sudo-fs");
 const cors = require("cors");
 
 
-let port = 80;
+let port = 5000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-let server;
-if (process.env.NODE_ENV === "production") {
-    // sudoFs.readFile(__dirname + '/selfsigned.key', {}, function (err, data) {
-    //     const cert = fs.readFileSync(__dirname + '/selfsigned.crt');
-    //     const options = {
-    //         key: data,
-    //         cert: cert
-    //     };
-    //     server = require('https').Server(options, app);
-    //     server.listen(port, () => console.log(`app listening on port ${port}!`));
-    // });
-    server = require('http').Server(app);
-    server.listen(port, () => console.log(`app listening on port ${port}!`));
-} else {
-    server = require('http').Server(app);
-    server.listen(port, () => console.log(`app listening on port ${port}!`));
-}
+const server = require('http').Server(app);
 
 app.use(cookieParser());
 
@@ -48,3 +32,5 @@ app.use(function (err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
 });
+
+server.listen(port, () => console.log(`app listening on port ${port}!`));
