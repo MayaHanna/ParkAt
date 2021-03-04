@@ -10,7 +10,7 @@ const cors = require("cors");
 
 let port = 5000;
 if (process.env.NODE_ENV === "production") {
-    port = 8080;
+    port = 80;
 }
 
 app.use(cors());
