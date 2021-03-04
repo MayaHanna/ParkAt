@@ -8,7 +8,10 @@ const sudoFs = require("@mh-cbon/sudo-fs");
 const cors = require("cors");
 
 
-const port = 5000;
+let port = 5000;
+if (process.env.NODE_ENV === "production") {
+    port = 80;
+}
 
 app.use(cors());
 app.use(express.json());
