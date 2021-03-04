@@ -16,15 +16,17 @@ app.use(express.urlencoded({ extended: false }));
 
 let server;
 if (process.env.NODE_ENV === "production") {
-    sudoFs.readFile(__dirname + '/selfsigned.key', {}, function (err, data) {
-        const cert = fs.readFileSync(__dirname + '/selfsigned.crt');
-        const options = {
-            key: data,
-            cert: cert
-        };
-        server = require('https').Server(options, app);
-        server.listen(port, () => console.log(`app listening on port ${port}!`));
-    });
+    // sudoFs.readFile(__dirname + '/selfsigned.key', {}, function (err, data) {
+    //     const cert = fs.readFileSync(__dirname + '/selfsigned.crt');
+    //     const options = {
+    //         key: data,
+    //         cert: cert
+    //     };
+    //     server = require('https').Server(options, app);
+    //     server.listen(port, () => console.log(`app listening on port ${port}!`));
+    // });
+    server = require('https').Server(app);
+    server.listen(port, () => console.log(`app listening on port ${port}!`));
 } else {
     server = require('http').Server(app);
     server.listen(port, () => console.log(`app listening on port ${port}!`));
