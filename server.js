@@ -3,10 +3,7 @@ const app = express();
 const routes = require('./Routes');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const fs = require("fs");
-const sudoFs = require("@mh-cbon/sudo-fs");
 const cors = require("cors");
-
 
 let port = 5000;
 
