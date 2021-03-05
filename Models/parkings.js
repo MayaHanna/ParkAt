@@ -13,9 +13,6 @@ const getParkings = () => {
             size: "Big",
             status: "Free",
             owner: "1",
-            price: 5,
-            start: startDate,
-            end: endDate,
         },
         {
             id: 2,
@@ -25,9 +22,6 @@ const getParkings = () => {
             size: "Big",
             status: "Free",
             owner: "1",
-            price: 5,
-            start: startDate,
-            end: endDate,
         },
         {
             id: 3,
@@ -37,9 +31,6 @@ const getParkings = () => {
             size: "Big",
             status: "Taken",
             owner: "1",
-            price: 5,
-            start: startDate,
-            end: endDate,
         },
         {
             id: 4,
@@ -49,9 +40,6 @@ const getParkings = () => {
             size: "Big",
             status: "Taken",
             owner: "1",
-            price: 5,
-            start: startDate,
-            end: endDate,
         },
         {
             id: 5,
@@ -61,9 +49,6 @@ const getParkings = () => {
             size: "Big",
             status: "Taken",
             owner: "1",
-            price: 5,
-            start: startDate,
-            end: endDate,
         },
         {
             id: 6,
@@ -73,9 +58,6 @@ const getParkings = () => {
             size: "Big",
             status: "Taken",
             owner: "1",
-            price: 5,
-            start: startDate,
-            end: endDate,
         }
 
     ]
