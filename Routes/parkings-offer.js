@@ -1,4 +1,4 @@
-const {getParkingsOffers} = require("../Controllers/parkings-offers");
+const { getParkingsOffers, addParkingOffer } = require("../Controllers/parkings-offers");
 
 const router = require("express").Router();
 
@@ -11,4 +11,16 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.post("/", async (req, res) => {
+    const newParkingOffer = {
+        ...req.body.formData,
+    };
+
+    try {
+        await addParkingOffer(newParkingOffer);
+        res.status(200).send();
+    } catch (e) {
+        res.status(400).send("Error");
+    }
+});
 module.exports = router;

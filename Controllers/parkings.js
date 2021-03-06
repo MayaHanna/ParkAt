@@ -8,7 +8,12 @@ const getParkingsByOwner = async () => {
   return getParkingsData();
 };
 
+const addParking = async (parking) => {
+  //TODO: post to db
+};
+
 module.exports = {
   getParkings,
-  getParkingsByOwner
+  getParkingsByOwner,
+  addParking
 }
