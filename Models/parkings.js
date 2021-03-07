@@ -11,7 +11,6 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה מלאה בחזירי בר חמודים",
             size: "Big",
-            status: "Free",
             owner: "1",
         },
         {
@@ -20,7 +19,6 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה קטנה ומטריפה, ברגע שתיכנסו לחניה אתם תשתגעו. תאמינו לי.",
             size: "Big",
-            status: "Free",
             owner: "1",
         },
         {
@@ -29,7 +27,6 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה פרטית במקום הכי חם שיש",
             size: "Big",
-            status: "Taken",
             owner: "1",
         },
         {
@@ -38,7 +35,6 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה פרטית במקום הכי חם שיש",
             size: "Big",
-            status: "Taken",
             owner: "1",
         },
         {
@@ -47,7 +43,6 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה פרטית במקום הכי חם שיש",
             size: "Big",
-            status: "Taken",
             owner: "1",
         },
         {
@@ -56,7 +51,6 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה פרטית במקום הכי חם שיש",
             size: "Big",
-            status: "Taken",
             owner: "1",
         }
 

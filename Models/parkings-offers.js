@@ -11,6 +11,8 @@ const getParkingsOffers = () => {
             start: startDate,
             end: endDate,
             parking: 1,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
         },
         {
             id: 2,
@@ -18,6 +20,8 @@ const getParkingsOffers = () => {
             start: startDate,
             end: endDate,
             parking: 2,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
         },
         {
             id: 3,
@@ -25,6 +29,8 @@ const getParkingsOffers = () => {
             start: startDate,
             end: endDate,
             parking: 3,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
         },
         {
             id: 4,
@@ -32,6 +38,8 @@ const getParkingsOffers = () => {
             start: startDate,
             end: endDate,
             parking: 4,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
         },
         {
             id: 5,
@@ -39,6 +47,8 @@ const getParkingsOffers = () => {
             start: startDate,
             end: endDate,
             parking: 5,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
         },
         {
             id: 6,
@@ -46,6 +56,8 @@ const getParkingsOffers = () => {
             start: startDate,
             end: endDate,
             parking: 6,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
         },
 
     ]
