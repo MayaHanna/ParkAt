@@ -8,8 +8,8 @@ const cors = require("cors");
 let port = 5000;
 
 app.use(cors({
-    origin: "*",
-    methods: "GET, PATCH, POST, DELETE",
+    origin: ["http://localhost:8100", "http://parkat.cs.colman.ac.il:8100"],
+    methods: "GET, PATCH, POST, DELETE, PUT",
     credentials: true,
     headers: "X-Requested-With, Content-Type, Accept, Authorization, Save-Data, Accept-Ranges"
   }));
