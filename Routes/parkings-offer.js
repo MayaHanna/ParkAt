@@ -26,8 +26,6 @@ router.post("/", async (req, res) => {
 
 router.put("/", async (req, res) => {
     const parkingOfferId = req.body.id;
-    console.log(req.body.id);
-    console.log(req.body.formData);
     const newParkingOfferFields = {
         ...req.body.formData,
     };
