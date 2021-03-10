@@ -12,6 +12,7 @@
     "http-errors": "^1.8.0",
     "nodemon": "^2.0.7",
     "sequelize": "^6.5.0"
+    
   },
   "devDependencies": {},
   "scripts": {
@@ -27,6 +28,11 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MayaHanna/ParkAt/issues"
+  },
+  "bin": "server.js",
+  "pkg": {
+    "scripts": ["node_modules/tedious/lib/tedious.js", "models/*.js"],
+    "assets": ["config/log.json"]
   },
   "homepage": "https://github.com/MayaHanna/ParkAt#readme"
 }
