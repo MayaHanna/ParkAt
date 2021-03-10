@@ -14,15 +14,13 @@ const PublicParkingOffer = db.define("public_parking_offers", {
   end: {
     type: Sequelize.TIME,
   },
-  // need to setup fk
-  parking_id: {
-    type: Sequelize.NUMBER,
-  },
-  // need to setup fk
-  creditor: {
-    type: Sequelize.NUMBER,
-  },
 });
+
+// Parking_id fk
+Parking.belongsTo(Parking, { foreignKey: "parking_id", targetKey: "id" });
+
+// creditor fk
+Parking.belongsTo(User, { foreignKey: "creditor", targetKey: "id" });
 
 PublicParkingOffer.sync().then(() => {
   console.log("PublicParkingOffers table created");

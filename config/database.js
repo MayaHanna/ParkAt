@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
-module.exports = new Sequelize("ParkAtTest.cs.colman.ac.il", {
-  host: "localhost",
+module.exports = new Sequelize("ParkAtTest", "parkat", "park306cs", {
+  host: "ParkAtTest.cs.colman.ac.il",
   dialect: "mssql",
   operatorsAliases: false,
 

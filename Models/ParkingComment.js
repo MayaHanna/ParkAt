@@ -5,14 +5,13 @@ const ParkingComment = db.define("parking_comments", {
   id: {
     type: Sequelize.NUMBER,
   },
-  // need to setup fk
-  parking_id: {
-    type: Sequelize.NUMBER,
-  },
   comment: {
     type: Sequelize.STRING,
   },
 });
+
+// Parking_id fk
+Parking.belongsTo(Parking, { foreignKey: "parking_id", targetKey: "id" });
 
 ParkingComment.sync().then(() => {
   console.log("ParkingComment table created");

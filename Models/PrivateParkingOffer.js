@@ -18,19 +18,16 @@ const PrivateParkingOffer = db.define("private_parking_offers", {
   can_be_permanent: {
     type: Sequelize.BOOLEAN,
   },
-  // need to setup fk
-  parking_id: {
-    type: Sequelize.NUMBER,
-  },
-  // need to setup fk
-  creditor: {
-    type: Sequelize.NUMBER,
-  },
-  // need to setup fk
-  customer: {
-    type: Sequelize.NUMBER,
-  },
 });
+
+// Parking_id fk
+Parking.belongsTo(Parking, { foreignKey: "parking_id", targetKey: "id" });
+
+// creditor fk
+Parking.belongsTo(User, { foreignKey: "creditor", targetKey: "id" });
+
+// customer fk
+Parking.belongsTo(User, { foreignKey: "customer", targetKey: "id" });
 
 PrivateParkingOffer.sync().then(() => {
   console.log("PrivateParkingOffers table created");

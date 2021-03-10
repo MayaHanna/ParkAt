@@ -14,11 +14,10 @@ const FreeParkingArea = db.define("free_parking_areas", {
   parkings_count: {
     type: Sequelize.NUMBER,
   },
-  // need to setup fk
-  reporter: {
-    type: Sequelize.NUMBER,
-  },
 });
+
+// Reporter fk
+Parking.belongsTo(User, { foreignKey: "reporter", targetKey: "id" });
 
 FreeParkingArea.sync().then(() => {
   console.log("FreeParkingArea table created");
