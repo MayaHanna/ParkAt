@@ -14,19 +14,18 @@ const Parking = db.define("parkings", {
   description: {
     type: Sequelize.STRING,
   },
-  // need to setup enum
   size: {
-    type: Sequelize.STRING,
+    type: Sequelize.ENUM,
+    values: ["motorcycle", "small_car", "big_car", "truck", "bus"],
   },
-  // need to setup enum
   status: {
-    type: Sequelize.STRING,
-  },
-  // need to setup fk
-  owner: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.ENUM,
+    values: ["free", "taken", "unknown"],
   },
 });
+
+// Owner fk
+Parking.belongsTo(User, { foreignKey: "owner", targetKey: "id" });
 
 Parking.sync().then(() => {
   console.log("parking table created");
