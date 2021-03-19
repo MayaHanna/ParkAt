@@ -4,8 +4,8 @@ const getParkings = async () => {
   return getParkingsData();
 };
 
-const getParkingsByOwner = async () => {
-  return getParkingsData();
+const getParkingsByOwner = async (req) => {
+  return getParkingsData().filter(_=>_.owner == req);
 };
 
 const addParking = async (parking) => {

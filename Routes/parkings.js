@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
 router.get("/byOwner/:ownerId", async (req, res) => {
     try {
-        const parkings = await getParkingsByOwner();
+        const parkings = await getParkingsByOwner(req.params.ownerId);
         res.status(200).send(parkings);
     } catch (e) {
         res.status(400).send("Error");
