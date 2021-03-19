@@ -17,10 +17,11 @@ router.post("/", async (req, res) => {
     };
 
     try {
-        await addParkingOffer(newParkingReport);
+        await addParkingReport(newParkingReport);
         res.status(200).send();
     } catch (e) {
         res.status(400).send("Error");
     }
 });
+
 module.exports = router;

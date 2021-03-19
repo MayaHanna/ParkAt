@@ -62,3 +62,5 @@ const getParkingsOffers = () => {
 
     ]
 };
+
+module.exports.getParkingsOffers = getParkingsOffers;
