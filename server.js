@@ -7,7 +7,12 @@ const cors = require("cors");
 
 let port = 5000;
 
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:8100",
+    methods: "GET, PATCH, POST, DELETE",
+    credentials: true,
+    headers: "X-Requested-With, Content-Type, Accept, Authorization, Save-Data, Accept-Ranges"
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
