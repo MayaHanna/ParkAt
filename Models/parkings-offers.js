@@ -12,7 +12,8 @@ const getParkingsOffers = () => {
             end: endDate,
             parking: 1,
             merchantId: "FAUJDYBDLARQG",
-            status: "Open"
+            status: "Closed",
+            client: "mayshanna.mh@gmail.com"
         },
         {
             id: 2,

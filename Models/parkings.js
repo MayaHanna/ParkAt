@@ -35,7 +35,7 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה פרטית במקום הכי חם שיש",
             size: "Big",
-            owner: "1",
+            owner: "mayshanna.mh@gmail.com",
         },
         {
             id: 5,
@@ -51,7 +51,7 @@ const getParkings = () => {
             isPrivate: true,
             description: "חניה פרטית במקום הכי חם שיש",
             size: "Big",
-            owner: "1",
+            owner: "mayshanna.mh@gmail.com",
         }
 
     ]
