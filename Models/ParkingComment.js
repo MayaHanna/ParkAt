@@ -1,9 +1,11 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
+const Parking = require("./Parking");
 
 const ParkingComment = db.define("parking_comments", {
   id: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   comment: {
     type: Sequelize.STRING,
@@ -11,7 +13,9 @@ const ParkingComment = db.define("parking_comments", {
 });
 
 // Parking_id fk
-Parking.belongsTo(Parking, { foreignKey: "parking_id", targetKey: "id" });
+ParkingComment.belongsTo(Parking, {
+  as: "parking",
+});
 
 ParkingComment.sync().then(() => {
   console.log("ParkingComment table created");

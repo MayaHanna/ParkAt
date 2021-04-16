@@ -1,9 +1,11 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
+const User = require("./User");
 
 const FreeParkingArea = db.define("free_parking_areas", {
   id: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   address: {
     type: Sequelize.STRING,
@@ -12,12 +14,12 @@ const FreeParkingArea = db.define("free_parking_areas", {
     type: Sequelize.STRING,
   },
   parkings_count: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
   },
 });
 
 // Reporter fk
-Parking.belongsTo(User, { foreignKey: "reporter", targetKey: "id" });
+FreeParkingArea.belongsTo(User, { foreignKey: "reporter" });
 
 FreeParkingArea.sync().then(() => {
   console.log("FreeParkingArea table created");

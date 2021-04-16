@@ -1,10 +1,9 @@
 const Sequelize = require("sequelize");
 
 module.exports = new Sequelize("ParkAtTest", "parkat", "park306cs", {
-  host: "ParkAtTest.cs.colman.ac.il",
+  host: "db.cs.colman.ac.il",
   dialect: "mssql",
   operatorsAliases: false,
-
   pool: {
     max: 5,
     min: 0,

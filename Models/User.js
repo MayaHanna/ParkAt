@@ -3,7 +3,8 @@ const db = require("../config/database");
 
 const User = db.define("users", {
   id: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   full_name: {
     type: Sequelize.STRING,
@@ -15,7 +16,7 @@ const User = db.define("users", {
     type: Sequelize.STRING,
   },
   phone_number: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
   },
 });
 

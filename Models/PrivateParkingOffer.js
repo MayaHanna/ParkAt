@@ -1,12 +1,15 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database");
+const Parking = require("./Parking");
+const User = require("./User");
 
 const PrivateParkingOffer = db.define("private_parking_offers", {
   id: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
+    primaryKey: true,
   },
   price: {
-    type: Sequelize.NUMBER,
+    type: Sequelize.INTEGER,
   },
   start: {
     type: Sequelize.TIME,
@@ -21,13 +24,20 @@ const PrivateParkingOffer = db.define("private_parking_offers", {
 });
 
 // Parking_id fk
-Parking.belongsTo(Parking, { foreignKey: "parking_id", targetKey: "id" });
+PrivateParkingOffer.belongsTo(Parking, {
+  // foreignKey: "parking_id",
+  as: "parking",
+});
 
 // creditor fk
-Parking.belongsTo(User, { foreignKey: "creditor", targetKey: "id" });
+PrivateParkingOffer.belongsTo(User, {
+  foreignKey: "creditor",
+});
 
 // customer fk
-Parking.belongsTo(User, { foreignKey: "customer", targetKey: "id" });
+PrivateParkingOffer.belongsTo(User, {
+  foreignKey: "customer",
+});
 
 PrivateParkingOffer.sync().then(() => {
   console.log("PrivateParkingOffers table created");
