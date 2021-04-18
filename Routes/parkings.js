@@ -33,5 +33,17 @@ router.post("/", async (req, res) => {
     }
 });
 
+router.post("/comment", async (req, res) => {
+    const comment = req.body.comment;
+    const parkingId = req.body.parkingId;
+
+    try {
+        await addCommentToParking(parkingId, comment);
+        res.status(200).send();
+    } catch (e) {
+        res.status(400).send("Error");
+    }
+});
+
 
 module.exports = router;
