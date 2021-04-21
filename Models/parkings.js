@@ -12,6 +12,7 @@ const parkings = [
         description: "חניה מלאה בחזירי בר חמודים",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location:  { lat: 32.023004577099655, lng: 34.76947814192939 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -44,6 +45,7 @@ const parkings = [
         description: "חניה קטנה ומטריפה, ברגע שתיכנסו לחניה אתם תשתגעו. תאמינו לי.",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location: { lat: 32.02536958076407, lng: 34.769403040079816 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -76,6 +78,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location:  { lat: 32.02541506100541, lng: 34.7700896855616 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -108,6 +111,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "mayshanna.mh@gmail.com",
+        location:  { lat: 32.02541506200541, lng: 34.7700896855616 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -140,6 +144,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location:  { lat: 32.02541506100641, lng: 34.7700896855616 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -172,6 +177,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "mayshanna.mh@gmail.com",
+        location:  { lat: 32.030974080088455, lng: 34.75723642856848 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
