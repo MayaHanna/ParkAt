@@ -4,20 +4,20 @@ const Parking = require("./Parking");
 
 const ParkingComment = db.define("parking_comments", {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER(11),
     primaryKey: true,
+    allowNull: false,
+    autoIncrement: true,
   },
-  comment: {
-    type: Sequelize.STRING,
-  },
+  comment: Sequelize.STRING,
 });
 
-// Parking_id fk
-ParkingComment.belongsTo(Parking, {
-  as: "parking",
-});
+// // Parking_id fk
+// ParkingComment.belongsTo(Parking, {
+//   as: "parking",
+// });
 
-ParkingComment.sync().then(() => {
-  console.log("ParkingComment table created");
-});
+// ParkingComment.sync().then(() => {
+//   console.log("ParkingComment table created");
+// });
 module.exports = ParkingComment;

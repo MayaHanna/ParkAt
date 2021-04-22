@@ -5,29 +5,25 @@ const User = require("./User");
 
 const Slot = db.define("slots", {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER(11),
     primaryKey: true,
+    allowNull: false,
+    autoIncrement: true,
   },
-  start: {
-    type: Sequelize.DATE,
-  },
-  end: {
-    type: Sequelize.DATE,
-  },
-  identification_code: {
-    type: Sequelize.INTEGER,
-  },
+  start: Sequelize.DATE,
+  end: Sequelize.DATE,
+  identification_code: Sequelize.INTEGER(10),
 });
-// public_parking_offer fk
-Slot.belongsTo(PublicParkingOffer, {
-  // foreignKey: "public_parking_offer",
-});
+// // public_parking_offer fk
+// Slot.belongsTo(PublicParkingOffer, {
+//   // foreignKey: "public_parking_offer",
+// });
 
-// outgoing_user fk
-Slot.belongsTo(User, { foreignKey: "outgoing_user" });
+// // outgoing_user fk
+// Slot.belongsTo(User, { foreignKey: "outgoing_user" });
 
-// incoming_user fk
-Slot.belongsTo(User, { foreignKey: "incoming_user" });
+// // incoming_user fk
+// Slot.belongsTo(User, { foreignKey: "incoming_user" });
 
 Slot.sync().then(() => {
   console.log("Slots table created");

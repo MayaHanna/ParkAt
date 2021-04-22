@@ -3,21 +3,15 @@ const db = require("../config/database");
 
 const User = db.define("users", {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER(11),
     primaryKey: true,
+    allowNull: false,
+    autoIncrement: true,
   },
-  full_name: {
-    type: Sequelize.STRING,
-  },
-  created_at: {
-    type: Sequelize.TIME,
-  },
-  address: {
-    type: Sequelize.STRING,
-  },
-  phone_number: {
-    type: Sequelize.INTEGER,
-  },
+  full_name: Sequelize.STRING(300),
+  created_at: Sequelize.TIME,
+  address: Sequelize.STRING(300),
+  phone_number: Sequelize.INTEGER(10),
 });
 
 User.sync().then(() => {

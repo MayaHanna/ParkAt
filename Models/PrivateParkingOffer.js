@@ -5,41 +5,35 @@ const User = require("./User");
 
 const PrivateParkingOffer = db.define("private_parking_offers", {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER(11),
     primaryKey: true,
+    allowNull: false,
+    autoIncrement: true,
   },
-  price: {
-    type: Sequelize.INTEGER,
-  },
-  start: {
-    type: Sequelize.TIME,
-  },
-  end: {
-    type: Sequelize.TIME,
-  },
+  price: Sequelize.INTEGER(10),
+  start: Sequelize.TIME,
+  end: Sequelize.TIME,
   // need to set it up to "end"
-  can_be_permanent: {
-    type: Sequelize.BOOLEAN,
-  },
+  can_be_permanent: Sequelize.BOOLEAN,
 });
 
-// Parking_id fk
-PrivateParkingOffer.belongsTo(Parking, {
-  // foreignKey: "parking_id",
-  as: "parking",
-});
+// // Parking_id fk
+// PrivateParkingOffer.belongsTo(Parking, {
+//   // foreignKey: "parking_id",
+//   as: "parking",
+// });
 
-// creditor fk
-PrivateParkingOffer.belongsTo(User, {
-  foreignKey: "creditor",
-});
+// // creditor fk
+// PrivateParkingOffer.belongsTo(User, {
+//   foreignKey: "creditor",
+// });
 
-// customer fk
-PrivateParkingOffer.belongsTo(User, {
-  foreignKey: "customer",
-});
+// // customer fk
+// PrivateParkingOffer.belongsTo(User, {
+//   foreignKey: "customer",
+// });
 
-PrivateParkingOffer.sync().then(() => {
-  console.log("PrivateParkingOffers table created");
-});
+// PrivateParkingOffer.sync().then(() => {
+//   console.log("PrivateParkingOffers table created");
+// });
 module.exports = PrivateParkingOffer;
