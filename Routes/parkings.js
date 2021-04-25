@@ -1,4 +1,4 @@
-const { getParkings, getParkingsByOwner, addParking } = require("../Controllers/parkings");
+const { getParkings, getParkingsByOwner, addParking, addCommentToParking } = require("../Controllers/parkings");
 
 const router = require("express").Router();
 

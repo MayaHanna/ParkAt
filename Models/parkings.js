@@ -213,7 +213,7 @@ const getParkingsByOwner = (ownerMail) => {
 };
 
 const updateParking = (parking) => {
-    const parkingIndex = parkings.findIndex(p => p.id === parkingId);
+    const parkingIndex = parkings.findIndex(p => p.id === parking.id);
     parkings[parkingIndex] = parking;
     return parking;
 }

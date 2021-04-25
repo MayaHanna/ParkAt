@@ -13,7 +13,7 @@ const getParkingsOffers = () => {
             parking: 1,
             merchantId: "FAUJDYBDLARQG",
             status: "Closed",
-            client: "mayshanna.mh@gmail.com"
+            client: "pazreshef@gmail.com"
         },
         {
             id: 2,

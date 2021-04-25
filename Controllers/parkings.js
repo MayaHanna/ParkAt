@@ -18,8 +18,9 @@ const addParking = async (parking) => {
 };
 
 const addCommentToParking = async (parkingId, comment) => {
-  const parking = getParkingById(parkingId);
+  const parking = getParkingByIdData(parkingId);
   parking.comments.push(comment);
+  console.log(parking);
   return updateParking(parking);
 };
 
