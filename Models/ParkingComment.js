@@ -12,6 +12,15 @@ const ParkingComment = db.define("parking_comments", {
   comment: Sequelize.STRING,
 });
 
+ParkingComment.associate = (models) => {
+  // Owner
+  ParkingComment.belongsTo(models.Parking, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
+
 // // Parking_id fk
 // ParkingComment.belongsTo(Parking, {
 //   as: "parking",

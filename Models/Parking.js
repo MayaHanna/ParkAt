@@ -22,6 +22,21 @@ const Parking = db.define("parkings", {
   },
 });
 
+Parking.associate = (models) => {
+  // Owner
+  Parking.belongsTo(models.User, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+
+  Parking.hasMany(models.ParkingRating);
+  Parking.hasMany(models.ParkingComment);
+  Parking.hasMany(models.ParkingPicture);
+  Parking.hasMany(models.FreeParkingReport);
+  Parking.hasMany(models.PublicParkingOffer);
+  Parking.hasMany(models.PrivateParkingOffer);
+};
 // // Owner fk
 // Parking.belongsTo(User, { foreignKey: "owner" });
 

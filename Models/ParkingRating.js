@@ -12,6 +12,14 @@ const ParkingRating = db.define("parking_ratings", {
   rating: Sequelize.INTEGER(3),
 });
 
+ParkingRating.associate = (models) => {
+  // Owner
+  ParkingRating.belongsTo(models.Parking, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
 // // Parking_id fk
 // ParkingRating.belongsTo(Parking, { as: "fk_parking" });
 

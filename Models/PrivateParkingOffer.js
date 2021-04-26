@@ -17,6 +17,29 @@ const PrivateParkingOffer = db.define("private_parking_offers", {
   can_be_permanent: Sequelize.BOOLEAN,
 });
 
+PrivateParkingOffer.associate = (models) => {
+  // Creditor
+  PrivateParkingOffer.belongsTo(models.User, {
+    foreignKey: {
+      alloNull: false,
+    },
+  });
+
+  // Customer
+  PrivateParkingOffer.belongsTo(models.User, {
+    foreignKey: {
+      alloNull: false,
+    },
+  });
+
+  // ParkingID
+  PrivateParkingOffer.belongsTo(models.Parking, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
+
 // // Parking_id fk
 // PrivateParkingOffer.belongsTo(Parking, {
 //   // foreignKey: "parking_id",

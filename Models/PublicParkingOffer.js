@@ -15,6 +15,22 @@ const PublicParkingOffer = db.define("public_parking_offers", {
   end: Sequelize.TIME,
 });
 
+PublicParkingOffer.associate = (models) => {
+  // Creditor
+  PublicParkingOffer.belongsTo(models.User, {
+    foreignKey: {
+      alloNull: false,
+    },
+  });
+
+  // ParkingID
+  PrivateParkingOffer.belongsTo(models.Parking, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
+
 // // Parking_id fk
 // PublicParkingOffer.belongsTo(Parking, { foreignKey: "parking_id" });
 

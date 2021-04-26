@@ -12,6 +12,14 @@ const ParkingPicture = db.define("parking_pictures", {
   picture: Sequelize.INTEGER,
 });
 
+ParkingPicture.associate = (models) => {
+  // Owner
+  ParkingPicture.belongsTo(models.Parking, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
 // // Parking_id fk
 // ParkingPicture.belongsTo(Parking, {
 //   // foreignKey: "parking_id",
