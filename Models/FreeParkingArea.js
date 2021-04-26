@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const db = require("../config/database");
+const db = require("../database/connection");
 const User = require("./User");
 
 const FreeParkingArea = db.define("free_parking_areas", {
