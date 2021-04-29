@@ -35,7 +35,4 @@ User.associate = (models) => {
   });
 };
 
-User.sync().then(() => {
-  console.log("users table created");
-});
 module.exports = User;

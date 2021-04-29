@@ -29,8 +29,8 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return [
-      queryInterface.removeColumn("slots", "outgoing_user"),
-      queryInterface.removeColumn("slots", "incoming_user"),
+      queryInterface.removeColumn("slots", "outgoingUser"),
+      queryInterface.removeColumn("slots", "incomingUser"),
       queryInterface.removeColumn("slots", "public_parking_offer"),
     ];
   },

@@ -4,28 +4,28 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert("users", [
       {
-        full_name: "Tom Edry",
-        created_at: new Date(),
+        fullName: "Tom Edry",
+        createdAt: new Date(),
         address: "לכיש 34, שוהם",
-        phone_number: "0525877520",
+        phoneNumber: "0525877520",
       },
       {
-        full_name: "Juliet Mulokandov",
-        created_at: new Date(),
+        fullName: "Juliet Mulokandov",
+        createdAt: new Date(),
         address: "שדרות קוגל 25, חולון",
-        phone_number: "0522353161",
+        phoneNumber: "0522353161",
       },
       {
-        full_name: "Paz Reshef",
-        created_at: new Date(),
+        fullName: "Paz Reshef",
+        createdAt: new Date(),
         address: "לא יודע כתובת",
-        phone_number: "0543490730",
+        phoneNumber: "0543490730",
       },
       {
-        full_name: "Maya Hanna",
-        created_at: new Date(),
+        fullName: "Maya Hanna",
+        createdAt: new Date(),
         address: "לא יודע כתובת",
-        phone_number: "0542606888",
+        phoneNumber: "0542606888",
       },
     ]);
   },

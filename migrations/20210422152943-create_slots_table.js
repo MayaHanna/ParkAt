@@ -11,7 +11,7 @@ module.exports = {
       },
       start: Sequelize.DATE,
       end: Sequelize.DATE,
-      identification_code: Sequelize.INTEGER(10),
+      identificationCode: Sequelize.INTEGER(10),
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });

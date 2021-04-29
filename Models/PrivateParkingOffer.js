@@ -10,11 +10,12 @@ const PrivateParkingOffer = db.define("private_parking_offers", {
     allowNull: false,
     autoIncrement: true,
   },
+
   price: Sequelize.INTEGER(10),
   start: Sequelize.TIME,
   end: Sequelize.TIME,
   // need to set it up to "end"
-  can_be_permanent: Sequelize.BOOLEAN,
+  canBePermanent: Sequelize.BOOLEAN,
 });
 
 PrivateParkingOffer.associate = (models) => {
@@ -32,8 +33,15 @@ PrivateParkingOffer.associate = (models) => {
     },
   });
 
-  // ParkingID
+  // ParkingId
   PrivateParkingOffer.belongsTo(models.Parking, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+
+  // MerchantId
+  PrivateParkingOffer.belongsTo(models.Merchant, {
     foreignKey: {
       allowNull: false,
     },

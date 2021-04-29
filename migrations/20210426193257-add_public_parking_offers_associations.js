@@ -10,7 +10,7 @@ module.exports = {
           key: "id",
         },
       }),
-      queryInterface.addColumn("public_parking_offers", "parking_id", {
+      queryInterface.addColumn("public_parking_offers", "parkingId", {
         type: Sequelize.INTEGER,
         references: {
           model: "parkings",
@@ -23,7 +23,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     return [
       queryInterface.removeColumn("public_parking_offers", "creditor"),
-      queryInterface.removeColumn("public_parking_offers", "parking_id"),
+      queryInterface.removeColumn("public_parking_offers", "parkingId"),
     ];
   },
 };

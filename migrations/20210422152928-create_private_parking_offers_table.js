@@ -13,9 +13,10 @@ module.exports = {
       start: Sequelize.TIME,
       end: Sequelize.TIME,
       // need to set it up to "end"
-      can_be_permanent: Sequelize.BOOLEAN,
+      canBePermanent: Sequelize.BOOLEAN,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
+      merchantId: Sequelize.STRING(200),
     });
   },
 

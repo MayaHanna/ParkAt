@@ -9,7 +9,7 @@ const Parking = db.define("parkings", {
     allowNull: false,
     autoIncrement: true,
   },
-  is_private: Sequelize.BOOLEAN,
+  isPrivate: Sequelize.BOOLEAN,
   address: Sequelize.STRING,
   description: Sequelize.STRING,
   size: {

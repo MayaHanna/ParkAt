@@ -1,20 +1,16 @@
 const {
-  getParkingsByOwner,
-  addParking,
-  addCommentToParking,
-} = require("../Controllers/parkings");
-
-const { getParkingsS } = require("../Services/parkings");
-const Parkings = require("../models/Parking");
+  getParkingsS,
+  getParkingsByOwnerS,
+  addParkingS,
+  addCommentToParkingS,
+} = require("../Services/parkings");
 
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   try {
-    // const parkings = await getParkings();
-    getParkingsS((response) => {
-      res.status(response.status || 200).send(response);
-    });
+    const parkings = await getParkingsS();
+    res.status(200).send(parkings);
   } catch (e) {
     res.status(400).send("Error");
   }
@@ -22,7 +18,7 @@ router.get("/", async (req, res) => {
 
 router.get("/byOwner/:ownerId", async (req, res) => {
   try {
-    const parkings = await getParkingsByOwner(req.params.ownerId);
+    const parkings = await getParkingsByOwnerS(req.params.ownerId);
     res.status(200).send(parkings);
   } catch (e) {
     res.status(400).send("Error");
@@ -35,7 +31,7 @@ router.post("/", async (req, res) => {
   };
 
   try {
-    await addParking(newParking);
+    await addParkingS(newParking);
     res.status(200).send();
   } catch (e) {
     res.status(400).send("Error");
@@ -47,7 +43,7 @@ router.post("/comment", async (req, res) => {
   const parkingId = req.body.parkingId;
 
   try {
-    await addCommentToParking(parkingId, comment);
+    await addCommentToParkingS(parkingId, comment);
     res.status(200).send();
   } catch (e) {
     res.status(400).send("Error");

@@ -9,10 +9,10 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
       },
-      full_name: Sequelize.STRING(300),
+      fullName: Sequelize.STRING(300),
       created_at: Sequelize.TIME,
       address: Sequelize.STRING(300),
-      phone_number: Sequelize.INTEGER(10),
+      phoneNumber: Sequelize.INTEGER(10),
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });

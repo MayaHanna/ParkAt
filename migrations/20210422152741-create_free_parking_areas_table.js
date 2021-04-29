@@ -11,7 +11,7 @@ module.exports = {
       },
       address: Sequelize.STRING(300),
       description: Sequelize.STRING(1000),
-      parkings_count: Sequelize.INTEGER(11),
+      parkingsCount: Sequelize.INTEGER(11),
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });

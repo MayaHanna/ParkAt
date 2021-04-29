@@ -9,7 +9,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
       },
-      is_private: Sequelize.BOOLEAN,
+      isPrivate: Sequelize.BOOLEAN,
       address: Sequelize.STRING,
       description: Sequelize.STRING,
       size: {
@@ -22,6 +22,7 @@ module.exports = {
       },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
+      // comments: Sequelize.ARRAY({}),
     });
   },
 

@@ -24,6 +24,13 @@ module.exports = {
           key: "id",
         },
       }),
+      // queryInterface.addColumn("private_parking_offers", "merchant_id", {
+      //   type: Sequelize.STRING(50),
+      //   references: {
+      //     model: "merchants",
+      //     key: "merchant_id",
+      //   },
+      // }),
     ];
   },
 
@@ -32,6 +39,7 @@ module.exports = {
       queryInterface.removeColumn("private_parking_offers", "creditor"),
       queryInterface.removeColumn("private_parking_offers", "customer"),
       queryInterface.removeColumn("private_parking_offers", "parking_id"),
+      // queryInterface.removeColumn("private_parking_offers", "merchant_id"),
     ];
   },
 };
