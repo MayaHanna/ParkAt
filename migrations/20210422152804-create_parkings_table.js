@@ -22,7 +22,7 @@ module.exports = {
       },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
-      // comments: Sequelize.ARRAY({}),
+      // need to add comments here
     });
   },
 
