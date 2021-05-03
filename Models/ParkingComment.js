@@ -10,6 +10,7 @@ const ParkingComment = db.define("parking_comments", {
     autoIncrement: true,
   },
   comment: Sequelize.STRING,
+  parkingId: Sequelize.NUMBER,
 });
 
 ParkingComment.associate = (models) => {

@@ -14,5 +14,5 @@ const getCommentsByParkingId = async (parkingId) => {
 };
 
 module.exports = {
-    getCommentsByParkingId,
+  getCommentsByParkingId,
 };
