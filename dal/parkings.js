@@ -1,8 +1,11 @@
 const Parkings = require("../models/Parking");
+const { getCommentsByParkingId } = require("./comments");
 
 const getParkings = async () => {
   try {
-    const parkings = await Parkings.findAll();
+    let parkings = await Parkings.findAll();
+    // return parkings.map(parking => {return {...parking, comments: await getCommentsByParkingId(parking.id)}});  
+    // let result = parkings.map(parking => parking.comments = await (getCommentsByParkingId(parking.id)));
     return parkings;
   } catch (error) {
     return error;
