@@ -1,6 +1,35 @@
+const https = require('https')
+
 const { getParkingsOffers, addParkingOffer, editParkingOffer } = require("../Controllers/parkings-offers");
 
 const router = require("express").Router();
+
+router.get("/find/:address", async (req, res) => {
+
+    try{
+       var requ= https.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${req.params.address}&inputtype=textquery&language=iw&fields=geometry&key=AIzaSyAe1Rhuj_BjDOoiqc3qF39_FOGFhd78d5Q`, resGoogle => {
+            console.log(`statusCode: ${resGoogle.statusCode}`)
+        
+            resGoogle.on('data', d => {
+                process.stdout.write(d);
+                res.status(200).send(d);
+            })
+        })
+
+      req.on('error', error => {
+        process.stdout.write("error");
+      });
+
+      process.on('uncaughtException', function (err) {
+        console.log(err);
+    });
+
+    } catch (e) {
+        res.status(400).send("Error");
+    }
+    
+});
+
 
 router.get("/", async (req, res) => {
     try {
