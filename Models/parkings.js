@@ -203,7 +203,40 @@ const parkings = [
                 publisherName: "פז רשף"
             }]
     }
-
+    ,
+    {
+        id: 7,
+        address: "דרך מנחם בגין 148",
+        isPrivate: false,
+        description: "ציבורית מעולה",
+        size: "Big",
+        owner: "mayshanna.mh@gmail.com",
+        location:  { lat: 32.0794060617834, lng: 34.79258294469114},
+        comments: [{
+            rating: 4,
+            content: "אחלה חניה",
+            publisher: "pazreshef@gmail.com",
+            publisherName: "פז רשף"
+        },
+            {
+                rating: 1,
+                content: "חרא חניה",
+                publisher: "pazreshef@gmail.com",
+                publisherName: "פז רשף"
+            },
+            {
+                rating: 3,
+                content: "תגובה מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד ארוכה",
+                publisher: "pazreshef@gmail.com",
+                publisherName: "פז רשף"
+            },
+            {
+                rating: 4,
+                content: "",
+                publisher: "pazreshef@gmail.com",
+                publisherName: "פז רשף"
+            }]
+    },
 ]
 
 const getParkings = () => {
