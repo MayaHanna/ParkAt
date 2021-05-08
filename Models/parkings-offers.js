@@ -60,6 +60,16 @@ const getParkingsOffers = () => {
             merchantId: "FAUJDYBDLARQG",
             status: "Open"
         },
+        
+        {
+            id: 7,
+            price: 7,
+            start: startDate,
+            end: endDate,
+            parking: 7,
+            merchantId: "FAUJDYBDLARQG",
+            status: "Open"
+        },
 
     ]
 };

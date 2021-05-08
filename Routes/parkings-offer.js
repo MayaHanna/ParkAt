@@ -1,6 +1,9 @@
+const https = require('https')
+
 const { getParkingsOffers, addParkingOffer, editParkingOffer } = require("../Controllers/parkings-offers");
 
 const router = require("express").Router();
+
 
 router.get("/", async (req, res) => {
     try {
