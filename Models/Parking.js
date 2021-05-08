@@ -14,17 +14,18 @@ const Parking = db.define("parkings", {
   description: Sequelize.STRING,
   size: {
     type: Sequelize.ENUM,
-    values: ["motorcycle", "small_car", "big_car", "truck", "bus"],
+    values: ["Small", "Big"],
   },
-  status: {
-    type: Sequelize.ENUM,
-    values: ["free", "taken", "unknown"],
-  },
+  // status: {
+  //   type: Sequelize.ENUM,
+  //   values: ["free", "taken", "unknown"],
+  // },
+  owner: Sequelize.STRING,
 });
 
 Parking.associate = (models) => {
   // Owner
-  Parking.belongsTo(models.User, {
+  Parking.belongsTo(models.Merchant, {
     foreignKey: {
       allowNull: false,
     },

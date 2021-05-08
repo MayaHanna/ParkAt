@@ -14,15 +14,14 @@ module.exports = {
       description: Sequelize.STRING,
       size: {
         type: Sequelize.ENUM,
-        values: ["motorcycle", "small_car", "big_car", "truck", "bus"],
+        values: ["Small", "Big"],
       },
-      status: {
-        type: Sequelize.ENUM,
-        values: ["free", "taken", "unknown"],
-      },
+      // status: {
+      //   type: Sequelize.ENUM,
+      //   values: ["free", "taken", "unknown"],
+      // },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
-      // need to add comments here
     });
   },
 

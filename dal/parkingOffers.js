@@ -9,6 +9,7 @@ const getParkingOffers = async () => {
   }
 };
 const addParkingOffer = async (newParkingOffer) => {
+  console.log("parkingOffer", newParkingOffer);
   try {
     await PrivateParkingOffer.create({
       price: newParkingOffer.price,
@@ -18,6 +19,7 @@ const addParkingOffer = async (newParkingOffer) => {
       merchantId: newParkingOffer.merchantId,
     });
   } catch (error) {
+    // console.log(error);
     return error;
   }
 };

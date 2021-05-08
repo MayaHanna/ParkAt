@@ -14,20 +14,14 @@ const PrivateParkingOffer = db.define("private_parking_offers", {
   price: Sequelize.INTEGER(10),
   start: Sequelize.TIME,
   end: Sequelize.TIME,
-  // need to set it up to "end"
-  canBePermanent: Sequelize.BOOLEAN,
+  parkingId: Sequelize.INTEGER,
+  merchantId: Sequelize.STRING(200),
+  client: Sequelize.STRING,
 });
 
 PrivateParkingOffer.associate = (models) => {
-  // Creditor
-  PrivateParkingOffer.belongsTo(models.User, {
-    foreignKey: {
-      alloNull: false,
-    },
-  });
-
-  // Customer
-  PrivateParkingOffer.belongsTo(models.User, {
+  // Client
+  PrivateParkingOffer.belongsTo(models.Merchant, {
     foreignKey: {
       alloNull: false,
     },

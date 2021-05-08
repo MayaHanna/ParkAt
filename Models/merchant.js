@@ -14,6 +14,24 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
       });
+      Merchant.hasMany(models.Parking, {
+        onDelete: "cascade",
+      });
+
+      Merchant.hasMany(models.FreeParkingArea, {
+        onDelete: "cascade",
+      });
+
+      Merchant.hasMany(models.PrivateParkingOffer, {
+        onDelete: "cascade",
+      });
+
+      Merchant.hasMany(models.PublicParkingOffer, {
+        onDelete: "cascade",
+      });
+      Merchant.hasMany(models.Slot, {
+        onDelete: "cascade",
+      });
     }
   }
   Merchant.init(

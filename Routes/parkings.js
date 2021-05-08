@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     const parkings = await getParkingsS();
     res.status(200).send(parkings);
   } catch (e) {
-    res.status(400).send("Error");
+    res.status(400).send(e);
   }
 });
 
@@ -21,7 +21,7 @@ router.get("/byOwner/:ownerId", async (req, res) => {
     const parkings = await getParkingsByOwnerS(req.params.ownerId);
     res.status(200).send(parkings);
   } catch (e) {
-    res.status(400).send("Error");
+    res.status(400).send(e);
   }
 });
 
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     await addParkingS(newParking);
     res.status(200).send();
   } catch (e) {
-    res.status(400).send("Error");
+    res.status(400).send(e);
   }
 });
 
@@ -46,7 +46,7 @@ router.post("/comment", async (req, res) => {
     await addCommentToParkingS(parkingId, comment);
     res.status(200).send();
   } catch (e) {
-    res.status(400).send("Error");
+    res.status(400).send(e);
   }
 });
 

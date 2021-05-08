@@ -12,11 +12,10 @@ module.exports = {
       price: Sequelize.INTEGER(10),
       start: Sequelize.TIME,
       end: Sequelize.TIME,
-      // need to set it up to "end"
-      canBePermanent: Sequelize.BOOLEAN,
+      //status: closed/open
+      status: Sequelize.STRING,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
-      merchantId: Sequelize.STRING(200),
     });
   },
 

@@ -12,6 +12,7 @@ const FreeParkingArea = db.define("free_parking_areas", {
   address: Sequelize.STRING(300),
   description: Sequelize.STRING(1000),
   parkingsCount: Sequelize.INTEGER(11),
+  reporter: Sequelize.INTEGER,
 });
 
 FreeParkingArea.associate = (models) => {

@@ -3,28 +3,31 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return [
-      queryInterface.addColumn("private_parking_offers", "creditor", {
-        type: Sequelize.INTEGER,
+      queryInterface.addColumn("private_parking_offers", "client", {
+        type: Sequelize.STRING,
         references: {
-          model: "users",
-          key: "id",
+          model: "merchants",
+          key: "userEmailAddress",
         },
+        allowNull: false,
+        unique: true,
       }),
-      queryInterface.addColumn("private_parking_offers", "customer", {
-        type: Sequelize.INTEGER,
+      queryInterface.addColumn("private_parking_offers", "merchantId", {
+        type: Sequelize.STRING(200),
         references: {
-          model: "users",
-          key: "id",
+          model: "merchants",
+          key: "merchantId",
         },
+        allowNull: false,
       }),
-      queryInterface.addColumn("private_parking_offers", "parking_id", {
+      queryInterface.addColumn("private_parking_offers", "parkingId", {
         type: Sequelize.INTEGER,
         references: {
           model: "parkings",
           key: "id",
         },
       }),
-      // queryInterface.addColumn("private_parking_offers", "merchant_id", {
+      // queryInterface.addColumn("private_parking_offers", "merchantId", {
       //   type: Sequelize.STRING(50),
       //   references: {
       //     model: "merchants",
@@ -36,10 +39,10 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     return [
-      queryInterface.removeColumn("private_parking_offers", "creditor"),
-      queryInterface.removeColumn("private_parking_offers", "customer"),
-      queryInterface.removeColumn("private_parking_offers", "parking_id"),
-      // queryInterface.removeColumn("private_parking_offers", "merchant_id"),
+      queryInterface.removeColumn("private_parking_offers", "merchantId"),
+      queryInterface.removeColumn("private_parking_offers", "client"),
+      queryInterface.removeColumn("private_parking_offers", "parkingId"),
+      // queryInterface.removeColumn("private_parking_offers", "merchantId"),
     ];
   },
 };

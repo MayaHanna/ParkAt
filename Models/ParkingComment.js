@@ -9,16 +9,25 @@ const ParkingComment = db.define("parking_comments", {
     allowNull: false,
     autoIncrement: true,
   },
-  comment: Sequelize.STRING,
+  content: Sequelize.STRING,
+  rating: Sequelize.INTEGER,
   parkingId: Sequelize.NUMBER,
+  publisherName: Sequelize.STRING,
 });
 
 ParkingComment.associate = (models) => {
-  // Owner
+  // parkingId
   ParkingComment.belongsTo(models.Parking, {
     foreignKey: {
       allowNull: false,
     },
+  });
+  // publisher
+  ParkingComment.belongsTo(models.Merchant, {
+    foreignKey: {
+      allowNull: false,
+    },
+    targetKey: "userEmailAddress",
   });
 };
 

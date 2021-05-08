@@ -9,7 +9,7 @@ const getParkingsS = async () => {
   try {
     return getParkings();
   } catch (error) {
-    callback(error);
+    return error;
   }
 };
 
@@ -17,7 +17,7 @@ const getParkingsByOwnerS = async (ownerId) => {
   try {
     return getParkingsByOwner(ownerId);
   } catch (error) {
-    callback(error);
+    return error;
   }
 };
 
@@ -25,7 +25,7 @@ const addParkingS = async (newParking) => {
   try {
     return addParking(newParking);
   } catch (error) {
-    callback(error);
+    return error;
   }
 };
 
@@ -33,7 +33,7 @@ const addCommentToParkingS = async (parkingId, comment) => {
   try {
     return addCommentToParking(parkingId, comment);
   } catch (error) {
-    callback(error);
+    return error;
   }
 };
 

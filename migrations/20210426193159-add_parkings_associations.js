@@ -3,15 +3,16 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.addColumn("parkings", "owner", {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       references: {
-        model: "users",
-        key: "id",
+        model: "merchants",
+        key: "userEmailAddress",
       },
+      allowNull: false,
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn("parkings", "owner");
+    // return queryInterface.removeColumn("parkings", "owner");
   },
 };

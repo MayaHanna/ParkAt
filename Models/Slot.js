@@ -13,6 +13,9 @@ const Slot = db.define("slots", {
   start: Sequelize.DATE,
   end: Sequelize.DATE,
   identification_code: Sequelize.INTEGER(10),
+  publicParkingOffer: Sequelize.INTEGER,
+  outgoingUser: Sequelize.INTEGER,
+  incomingUser: Sequelize.INTEGER,
 });
 
 Slot.associate = (models) => {

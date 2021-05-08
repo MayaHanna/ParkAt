@@ -10,10 +10,11 @@ const ParkingRating = db.define("parking_ratings", {
     autoIncrement: true,
   },
   rating: Sequelize.INTEGER(3),
+  parkingId: Sequelize.INTEGER,
 });
 
 ParkingRating.associate = (models) => {
-  // Owner
+  // ParkingId
   ParkingRating.belongsTo(models.Parking, {
     foreignKey: {
       allowNull: false,

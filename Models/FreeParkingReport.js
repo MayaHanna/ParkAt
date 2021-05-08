@@ -10,10 +10,11 @@ const FreeParkingReport = db.define("free_parking_reports", {
     autoIncrement: true,
   },
   time: Sequelize.DATE,
+  parkingId: Sequelize.NUMBER,
 });
 
 FreeParkingReport.associate = (models) => {
-  // Owner
+  // parkingId
   FreeParkingReport.belongsTo(models.Parking, {
     foreignKey: {
       allowNull: false,

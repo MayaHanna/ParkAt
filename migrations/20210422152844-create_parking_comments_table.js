@@ -9,9 +9,11 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
       },
-      comment: Sequelize.STRING,
+      content: Sequelize.STRING,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
+      rating: Sequelize.INTEGER,
+      publisherName: Sequelize.STRING,
     });
   },
 

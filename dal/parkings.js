@@ -51,17 +51,24 @@ const getParkingsByOwner = async (ownerId) => {
 
 const addParking = async (newParking) => {
   try {
+    console.log({
+      ...newParking,
+      owner:
+        newParking.owner.charAt(0).toUpperCase() + newParking.owner.slice(1),
+    });
     await Parkings.create({
       isPrivate: newParking.isPrivate,
       address: newParking.address,
       description: newParking.description,
       size: newParking.size,
-      status: newParking.status,
-      owner: newParking.owner,
+      owner:
+        newParking.owner.charAt(0).toUpperCase() + newParking.owner.slice(1),
+      // createdAt: new Date(),
+      // updatedAt: new Date(),
     });
-    return parkings;
   } catch (error) {
-    callback(error);
+    console.log(error);
+    return error;
   }
 };
 
