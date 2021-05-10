@@ -255,7 +255,7 @@ const updateParking = (parking) => {
     const parkingIndex = parkings.findIndex(p => p.id === parking.id);
     parkings[parkingIndex] = parking;
     return parking;
-}
+};
 
 module.exports = {
     getParkings,
