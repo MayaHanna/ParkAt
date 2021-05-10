@@ -31,8 +31,8 @@ router.post("/", async (req, res) => {
   };
 
   try {
-    await addParkingS(newParking);
-    res.status(200).send();
+    const newParkingId = await addParkingS(newParking);
+    res.sendStatus(200).send(newParkingId);
   } catch (e) {
     res.status(400).send(e);
   }

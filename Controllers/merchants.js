@@ -1,10 +1,10 @@
-const {addPointsToMerchantData} = require("../Models/merchants");
-const {editMerchantData} = require("../Models/merchants");
-const {addMerchantData} = require("../Models/merchants");
-const { getMerchantsData } = require("../Models/merchants");
+const { addPointsToMerchantData } = require("../dal/merchants");
+const { editMerchantData } = require("../dal/merchants");
+const { addMerchantData } = require("../dal/merchants");
+const { getMerchantByUserData } = require("../dal/merchants");
 
-const getMerchantIdByUser = async (req) => {
-  return getMerchantsData().find(_=>_.userMailAddress == req);
+const getMerchantByUser = async (userMail) => {
+  return getMerchantByUserData(userMail);
 };
 
 const addMerchant = async (newMerchant) => {
@@ -13,15 +13,15 @@ const addMerchant = async (newMerchant) => {
 
 const addPointsToMerchant = async (userMail, pointsToAdd) => {
   return addPointsToMerchantData(userMail, pointsToAdd);
-}
+};
 
 const editMerchant = async (userMail, newMerchant) => {
   return editMerchantData(userMail, newMerchant);
 };
 
 module.exports = {
-  getMerchantIdByUser,
+  getMerchantByUser,
   addMerchant,
   addPointsToMerchant,
-  editMerchant
+  editMerchant,
 };

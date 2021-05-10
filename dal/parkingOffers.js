@@ -9,19 +9,16 @@ const getParkingOffers = async () => {
     return error;
   }
 };
-const addParkingOffer = async (newParkingOffer, userEmailAddress) => {
+const addParkingOffer = async (newParkingOffer) => {
   try {
-    const merchantId = await getMerchantIdByUser(userEmailAddress);
-    console.log(newParkingOffer);
-
     await PrivateParkingOffer.create({
       price: newParkingOffer.price,
       start: newParkingOffer.start,
       end: newParkingOffer.end,
-      parkindId: newParkingOffer.parking,
       status: newParkingOffer.status,
+      parkindId: newParkingOffer.parking,
       canBePermanent: newParkingOffer.canBePermanent,
-      merchantId: merchantId[0].dataValues.merchantId,
+      owner: newParkingOffer.owner,
     });
   } catch (error) {
     console.log(error);
