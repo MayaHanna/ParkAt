@@ -47,7 +47,7 @@ router.put("/", async (req, res) => {
 
   try {
     const newMerchantAfterEdit = await editMerchant(
-      req.body.formData.userMail,
+      req.body.formData.userEmailAddress,
       newMerchant
     );
     res.status(200).send(newMerchantAfterEdit);
