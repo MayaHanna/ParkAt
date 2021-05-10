@@ -10,13 +10,14 @@ module.exports = {
       merchantId: {
         type: Sequelize.STRING(200),
         allowNull: false,
-        primaryKey: true,
+        unique: true,
       },
       userEmailAddress: {
         type: Sequelize.STRING,
-        unique: true,
+        primaryKey: true,
         allowNull: false,
       },
+      points: Sequelize.INTEGER,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

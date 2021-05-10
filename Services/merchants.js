@@ -1,8 +1,8 @@
 const { getMerchantIdByUser } = require("../dal/merchants");
 
-const getMerchantIdByUserS = async (userEmailAddresss) => {
+const getMerchantIdByUserS = async (userMail) => {
   try {
-    return getMerchantIdByUser(userEmailAddresss);
+    return getMerchantIdByUser(userMail);
   } catch (error) {
     callback(error);
   }

@@ -51,16 +51,16 @@ const getParkingsByOwner = async (ownerId) => {
 
 const addParking = async (newParking) => {
   try {
-    await Parkings.create({
+    let returnedParking = "";
+    returnedParking = await Parkings.create({
       isPrivate: newParking.isPrivate,
       address: newParking.address,
       description: newParking.description,
       size: newParking.size,
       owner:
         newParking.owner.charAt(0).toUpperCase() + newParking.owner.slice(1),
-      // createdAt: new Date(),
-      // updatedAt: new Date(),
     });
+    return returnedParking.dataValues.id;
   } catch (error) {
     console.log(error);
     return error;
