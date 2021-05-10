@@ -10,6 +10,7 @@ const Merchant = db.define("merchants", {
   },
   merchantId: Sequelize.STRING,
   userEmailAddress: Sequelize.STRING,
+  points: Sequelize.NUMBER
 });
 
 Merchant.associate = (models) => {

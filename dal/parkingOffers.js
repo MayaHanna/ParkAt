@@ -1,4 +1,4 @@
-const PrivateParkingOffer = require("../models/PrivateParkingOffer");
+const PrivateParkingOffer = require("../models/ParkingOffer");
 const { getMerchantIdByUser } = require("./merchants");
 
 const getParkingOffers = async () => {
@@ -16,7 +16,7 @@ const addParkingOffer = async (newParkingOffer) => {
       start: newParkingOffer.start,
       end: newParkingOffer.end,
       status: newParkingOffer.status,
-      parkindId: newParkingOffer.parking,
+      parkingId: newParkingOffer.parkingId,
       canBePermanent: newParkingOffer.canBePermanent,
       owner: newParkingOffer.owner,
     });

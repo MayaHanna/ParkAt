@@ -8,13 +8,19 @@ const getParkings = async () => {
       async (parking) => await getCommentsByParkingId(parking.id)
     );
     comments = await Promise.all(comments);
+    console.log(comments);
     let result = parkings.map((parking) => ({
       ...parking.dataValues,
       comments: comments.filter((parkingCommentsArray) => {
-        if (parkingCommentsArray[0])
+        if (parkingCommentsArray[0]) {
           if (parkingCommentsArray[0].parkingId === parking.id) {
-            return { ...parkingCommentsArray };
+            return [...parkingCommentsArray];
+          } else {
+            return [];
           }
+        } else {
+          return [];
+        }
       })[0],
     }));
     return result;
@@ -57,10 +63,9 @@ const addParking = async (newParking) => {
       address: newParking.address,
       description: newParking.description,
       size: newParking.size,
-      owner:
-        newParking.owner.charAt(0).toUpperCase() + newParking.owner.slice(1),
+      owner: newParking.owner,
     });
-    return returnedParking.dataValues.id;
+    return returnedParking.dataValues;
   } catch (error) {
     console.log(error);
     return error;

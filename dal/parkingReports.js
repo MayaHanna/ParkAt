@@ -9,10 +9,11 @@ const getParkingReports = async () => {
   }
 };
 const addParkingReport = async (newParkingReport) => {
+  console.log(newParkingReport);
   try {
     await FreeParkingReport.create({
       time: newParkingReport.time,
-      parkingId: newParkingReport.id,
+      parkingId: newParkingReport.parkingId,
     });
   } catch (error) {
     return error;

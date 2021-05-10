@@ -8,7 +8,7 @@ const getMerchantByUserData = async (userMail) => {
       },
     });
 
-    return merchantId;
+    return merchant[0];
   } catch (error) {
     return error;
   }
@@ -19,6 +19,7 @@ const addMerchantData = async (newMerchant) => {
     return await Merchant.create({
       merchantId: newMerchant.merchantId,
       userEmailAddress: newMerchant.userEmailAddress,
+      points: newMerchant.points
     });
   } catch (error) {
     return error;
@@ -32,7 +33,7 @@ const addPointsToMerchantData = async (userMail, pointsToAdd) => {
         userEmailAddress: userMail,
       },
     });
-    user.increment({ points: pointsToAdd });
+    return await user.increment({ points: pointsToAdd });
   } catch (error) {
     return error;
   }
@@ -48,7 +49,8 @@ const editMerchantData = async (userMail, newMerchant) => {
       },
       { where: { userEmailAddress: userMail } }
     );
-    return updatedMerchant;
+
+    return await getMerchantByUserData(userMail);
   } catch (error) {
     return error;
   }

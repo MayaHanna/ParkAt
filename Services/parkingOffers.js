@@ -13,7 +13,7 @@ const getParkingOffersS = async () => {
 };
 const addParkingOfferS = async (newParkingOffer) => {
   try {
-    return addParkingOffer(addParkingOffer(newParkingOffer));
+    return addParkingOffer(newParkingOffer);
   } catch (error) {
     return error;
   }

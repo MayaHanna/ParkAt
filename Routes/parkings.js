@@ -31,9 +31,10 @@ router.post("/", async (req, res) => {
   };
 
   try {
-    const newParkingId = await addParkingS(newParking);
-    res.sendStatus(200).send(newParkingId);
+    const newParkingAfterPost = await addParkingS(newParking);
+    res.status(200).send(newParkingAfterPost);
   } catch (e) {
+    console.log(e);
     res.status(400).send(e);
   }
 });
