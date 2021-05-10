@@ -1,5 +1,5 @@
 const getParkingsReports = () => {
-    return []
+  return [];
 };
 
 module.exports.getParkingsReports = getParkingsReports;
