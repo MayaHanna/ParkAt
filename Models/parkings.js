@@ -12,6 +12,7 @@ const parkings = [
         description: "חניה מלאה בחזירי בר חמודים",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location:  { lat: 32.023004577099655, lng: 34.76947814192939 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -44,6 +45,7 @@ const parkings = [
         description: "חניה קטנה ומטריפה, ברגע שתיכנסו לחניה אתם תשתגעו. תאמינו לי.",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location: { lat: 32.02536958076407, lng: 34.769403040079816 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -76,6 +78,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location:  { lat: 32.02541506100541, lng: 34.7700896855616 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -108,6 +111,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "mayshanna.mh@gmail.com",
+        location:  { lat: 32.02541506200541, lng: 34.7700896855616 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -140,6 +144,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "pazreshef@gmail.com",
+        location:  { lat: 32.02541506100641, lng: 34.7700896855616 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -172,6 +177,7 @@ const parkings = [
         description: "חניה פרטית במקום הכי חם שיש",
         size: "Big",
         owner: "mayshanna.mh@gmail.com",
+        location:  { lat: 32.030974080088455, lng: 34.75723642856848 },
         comments: [{
             rating: 4,
             content: "אחלה חניה",
@@ -197,7 +203,40 @@ const parkings = [
                 publisherName: "פז רשף"
             }]
     }
-
+    ,
+    {
+        id: 7,
+        address: "דרך מנחם בגין 148",
+        isPrivate: false,
+        description: "ציבורית מעולה",
+        size: "Big",
+        owner: "mayshanna.mh@gmail.com",
+        location:  { lat: 32.0794060617834, lng: 34.79258294469114},
+        comments: [{
+            rating: 4,
+            content: "אחלה חניה",
+            publisher: "pazreshef@gmail.com",
+            publisherName: "פז רשף"
+        },
+            {
+                rating: 1,
+                content: "חרא חניה",
+                publisher: "pazreshef@gmail.com",
+                publisherName: "פז רשף"
+            },
+            {
+                rating: 3,
+                content: "תגובה מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד מאוד ארוכה",
+                publisher: "pazreshef@gmail.com",
+                publisherName: "פז רשף"
+            },
+            {
+                rating: 4,
+                content: "",
+                publisher: "pazreshef@gmail.com",
+                publisherName: "פז רשף"
+            }]
+    },
 ]
 
 const getParkings = () => {
@@ -216,7 +255,7 @@ const updateParking = (parking) => {
     const parkingIndex = parkings.findIndex(p => p.id === parking.id);
     parkings[parkingIndex] = parking;
     return parking;
-}
+};
 
 module.exports = {
     getParkings,
