@@ -19,9 +19,10 @@ router.post("/", async (req, res) => {
   const newParkingOffer = {
     ...req.body.formData,
   };
+  const userEmailAddress = req.body.userEmailAddress;
 
   try {
-    await addParkingOfferS(newParkingOffer);
+    await addParkingOfferS(newParkingOffer, userEmailAddress);
     res.status(200).send();
   } catch (e) {
     res.status(400).send("Error");

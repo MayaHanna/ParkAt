@@ -51,11 +51,6 @@ const getParkingsByOwner = async (ownerId) => {
 
 const addParking = async (newParking) => {
   try {
-    console.log({
-      ...newParking,
-      owner:
-        newParking.owner.charAt(0).toUpperCase() + newParking.owner.slice(1),
-    });
     await Parkings.create({
       isPrivate: newParking.isPrivate,
       address: newParking.address,

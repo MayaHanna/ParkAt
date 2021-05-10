@@ -1,25 +1,30 @@
 const PrivateParkingOffer = require("../models/PrivateParkingOffer");
+const { getMerchantIdByUser } = require("./merchants");
 
 const getParkingOffers = async () => {
   try {
-    const parkings = await PrivateParkingOffer.findAll();
-    return parkings;
+    const parkingOffers = await PrivateParkingOffer.findAll();
+    return parkingOffers;
   } catch (error) {
     return error;
   }
 };
-const addParkingOffer = async (newParkingOffer) => {
-  console.log("parkingOffer", newParkingOffer);
+const addParkingOffer = async (newParkingOffer, userEmailAddress) => {
   try {
+    const merchantId = await getMerchantIdByUser(userEmailAddress);
+    console.log(newParkingOffer);
+
     await PrivateParkingOffer.create({
       price: newParkingOffer.price,
       start: newParkingOffer.start,
       end: newParkingOffer.end,
+      parkindId: newParkingOffer.parking,
+      status: newParkingOffer.status,
       canBePermanent: newParkingOffer.canBePermanent,
-      merchantId: newParkingOffer.merchantId,
+      merchantId: merchantId[0].dataValues.merchantId,
     });
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return error;
   }
 };

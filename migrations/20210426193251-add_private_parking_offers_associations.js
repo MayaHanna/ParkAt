@@ -9,7 +9,7 @@ module.exports = {
           model: "merchants",
           key: "userEmailAddress",
         },
-        allowNull: false,
+        allowNull: true,
         unique: true,
       }),
       queryInterface.addColumn("private_parking_offers", "merchantId", {
@@ -26,6 +26,7 @@ module.exports = {
           model: "parkings",
           key: "id",
         },
+        allowNull: false,
       }),
       // queryInterface.addColumn("private_parking_offers", "merchantId", {
       //   type: Sequelize.STRING(50),

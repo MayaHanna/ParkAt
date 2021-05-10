@@ -11,9 +11,9 @@ const getParkingOffersS = async () => {
     return error;
   }
 };
-const addParkingOfferS = async (newParkingOffer) => {
+const addParkingOfferS = async (newParkingOffer, userEmailAddress) => {
   try {
-    return addParkingOffer(addParkingOffer(newParkingOffer));
+    return addParkingOffer(addParkingOffer(newParkingOffer, userEmailAddress));
   } catch (error) {
     return error;
   }
