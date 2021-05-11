@@ -13,9 +13,8 @@
     "http-errors": "^1.8.0",
     "nodemon": "^2.0.7",
     "sequelize": "^6.6.2",
-    "tedious": "^11.0.7"
+    "tedious": "^11.0.8"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=development & nodemon server.js",
