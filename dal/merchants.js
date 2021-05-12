@@ -1,4 +1,4 @@
-const Merchant = require("../models/Merchant");
+const Merchant = require("../Models/Merchant");
 
 const getMerchantByUserData = async (userMail) => {
   try {
