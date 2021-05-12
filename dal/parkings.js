@@ -1,4 +1,4 @@
-const { Parkings } = require("../models/Parking");
+const Parkings = require("../Models/Parking");
 const { getCommentsByParkingId } = require("./comments");
 
 const getParkings = async () => {
