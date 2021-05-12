@@ -9,7 +9,7 @@ router.get("/find/:address", async (req, res) => {
   try{
     https.get(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${req.params.address}&inputtype=textquery&language=iw&fields=geometry&key=AIzaSyAe1Rhuj_BjDOoiqc3qF39_FOGFhd78d5Q`, resGoogle => {
         console.log(`statusCode: ${resGoogle.statusCode}`)
-    
+
         resGoogle.on('data', d => {
           res.status(200).send(d);
         })

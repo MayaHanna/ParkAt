@@ -1,4 +1,4 @@
-const PrivateParkingOffer = require("../models/ParkingOffer");
+const PrivateParkingOffer = require("../Models/ParkingOffer");
 const { getMerchantIdByUser } = require("./merchants");
 
 const getParkingOffers = async () => {

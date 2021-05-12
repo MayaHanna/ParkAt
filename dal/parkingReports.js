@@ -1,4 +1,4 @@
-const FreeParkingReport = require("../models/FreeParkingReport");
+const FreeParkingReport = require("../Models/FreeParkingReport");
 
 const getParkingReports = async () => {
   try {
