@@ -8,6 +8,8 @@ module.exports = {
         address: "לכיש 34, שוהם",
         description: "חניה מטורפת",
         size: "Big",
+        lat: 32.02536958076407,
+        lng: 34.769403040079816,
         owner: "Tomedry7@gmail.com",
       },
     ]);
