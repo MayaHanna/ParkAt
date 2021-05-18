@@ -1,4 +1,4 @@
-const Comment = require("../models/ParkingComment");
+const Comment = require("../Models/ParkingComment");
 
 const getCommentsByParkingId = async (parkingId) => {
   try {
