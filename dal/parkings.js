@@ -11,7 +11,8 @@ const getParkings = async () => {
     console.log(comments);
     let result = parkings.map((parking) => ({
       ...parking.dataValues,
-      comments: comments.filter((parkingCommentsArray) => {
+      location: { lat: parking.lat, lng: parking.lng },
+      comments: comments.map((parkingCommentsArray) => {
         if (parkingCommentsArray[0]) {
           if (parkingCommentsArray[0].parkingId === parking.id) {
             return [...parkingCommentsArray];
@@ -42,6 +43,7 @@ const getParkingsByOwner = async (ownerId) => {
     comments = await Promise.all(comments);
     let result = parkings.map((parking) => ({
       ...parking.dataValues,
+      location: { lat: parking.lat, lng: parking.lng },
       comments: comments.filter((parkingCommentsArray) => {
         if (parkingCommentsArray[0])
           if (parkingCommentsArray[0].parkingId === parking.id) {
@@ -57,6 +59,7 @@ const getParkingsByOwner = async (ownerId) => {
 
 const addParking = async (newParking) => {
   try {
+    console.log(newParking);
     let returnedParking = "";
     returnedParking = await Parkings.create({
       isPrivate: newParking.isPrivate,
@@ -64,6 +67,8 @@ const addParking = async (newParking) => {
       description: newParking.description,
       size: newParking.size,
       owner: newParking.owner,
+      lat: newParking.location.lat,
+      lng: newParking.location.lng,
     });
     return returnedParking.dataValues;
   } catch (error) {

@@ -1,7 +1,5 @@
 const Sequelize = require("sequelize");
 const db = require("../database/connection");
-const PublicParkingOffer = require("./PublicParkingOffer");
-const User = require("./User");
 
 const Slot = db.define("slots", {
   id: {
