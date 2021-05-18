@@ -13,6 +13,15 @@ const getSlotsByParkingOfferId = async (parkingOfferId) => {
   }
 };
 
+const getSlots = async () => {
+  try {
+    const slots = await Slot.findAll();
+    return slots;
+  } catch (error) {
+    return error;
+  }
+};
+
 const addSlots = async (slots) => {
   try {
     Slot.bulkCreate(slots);
@@ -24,4 +33,5 @@ const addSlots = async (slots) => {
 module.exports = {
   getSlotsByParkingOfferId,
   addSlots,
+  getSlots,
 };

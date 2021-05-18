@@ -13,6 +13,7 @@ module.exports = {
       start: Sequelize.TIME,
       end: Sequelize.TIME,
       status: Sequelize.STRING,
+      isPrivate: Sequelize.BOOLEAN,
       canBePermanent: Sequelize.BOOLEAN,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,

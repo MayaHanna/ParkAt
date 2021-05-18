@@ -1,18 +1,27 @@
 const PrivateParkingOffer = require("../Models/ParkingOffer");
 const { getMerchantIdByUser } = require("./merchants");
-const { getSlotsByParkingId, addSlots } = require("./slots");
+const { getSlotsByParkingOfferId, addSlots } = require("./slots");
 
 const getParkingOffers = async () => {
   try {
     const parkingOffers = await PrivateParkingOffer.findAll();
-    let slots = parkingOffers.map(async (offer) => {
-      if (!offer.isPrivate) await getSlotsByParkingOfferId(offer.id);
-    });
+    let slots = parkingOffers.map(
+      async (offer) => await getSlotsByParkingOfferId(offer.id)
+    );
+    slots = await Promise.all(slots);
     let result = parkingOffers.map((offer) => ({
       ...offer,
-      slots: slots.map((slot) => {
-        slot.publicParkingOffer === offer.id ? slot : {};
-      }),
+      slots: slots.map((slotsArray) => {
+        if (slotsArray[0]) {
+          if (slotsArray[0].publicParkingOffer === offer.id) {
+            return [...slotsArray];
+          } else {
+            return [];
+          }
+        } else {
+          return [];
+        }
+      })[0],
     }));
     return result;
   } catch (error) {
@@ -29,6 +38,7 @@ const addParkingOffer = async (newParkingOffer) => {
       parkingId: newParkingOffer.parkingId,
       canBePermanent: newParkingOffer.canBePermanent,
       owner: newParkingOffer.owner,
+      isPrivate: newParkingOffer.isPrivate,
     });
     await addSlots(newParkingOffer.slots);
   } catch (error) {
