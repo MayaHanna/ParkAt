@@ -1,10 +1,20 @@
 const PrivateParkingOffer = require("../models/ParkingOffer");
 const { getMerchantIdByUser } = require("./merchants");
+const { getSlotsByParkingId, addSlots } = require("./slots");
 
 const getParkingOffers = async () => {
   try {
     const parkingOffers = await PrivateParkingOffer.findAll();
-    return parkingOffers;
+    let slots = parkingOffers.map(async (offer) => {
+      if (!offer.isPrivate) await getSlotsByParkingOfferId(offer.id);
+    });
+    let result = parkingOffers.map((offer) => ({
+      ...offer,
+      slots: slots.map((slot) => {
+        slot.publicParkingOffer === offer.id ? slot : {};
+      }),
+    }));
+    return result;
   } catch (error) {
     return error;
   }
@@ -20,6 +30,7 @@ const addParkingOffer = async (newParkingOffer) => {
       canBePermanent: newParkingOffer.canBePermanent,
       owner: newParkingOffer.owner,
     });
+    await addSlots(newParkingOffer.slots);
   } catch (error) {
     console.log(error);
     return error;
