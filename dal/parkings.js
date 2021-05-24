@@ -8,7 +8,6 @@ const getParkings = async () => {
       async (parking) => await getCommentsByParkingId(parking.id)
     );
     comments = await Promise.all(comments);
-    console.log(comments);
     let result = parkings.map((parking) => ({
       ...parking.dataValues,
       location: { lat: parking.lat, lng: parking.lng },

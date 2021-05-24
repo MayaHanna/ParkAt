@@ -10,7 +10,7 @@ const getParkingOffers = async () => {
     );
     slots = await Promise.all(slots);
     let result = parkingOffers.map((offer) => ({
-      ...offer,
+      ...offer.dataValues,
       slots: slots.map((slotsArray) => {
         if (slotsArray[0]) {
           if (slotsArray[0].publicParkingOffer === offer.id) {
