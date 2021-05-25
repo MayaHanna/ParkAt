@@ -1,4 +1,5 @@
 const Parkings = require("../Models/Parking");
+const Sequelize = require("sequelize");
 const { getCommentsByParkingId } = require("./comments");
 
 const getParkings = async () => {
@@ -93,9 +94,27 @@ const addCommentToParking = async (parkingId, comment) => {
   }
 };
 
+const addImageToParking = async (parkingId, imageUrl) => {
+  try {
+    await Parkings.update(
+        {
+          comments: Sequelize.fn(
+              "array_append",
+              Sequelize.col("pictures"),
+              imageUrl
+          ),
+        },
+        { where: { id: parkingId } }
+    );
+  } catch (error) {
+    callback(error);
+  }
+};
+
 module.exports = {
   getParkings,
   getParkingsByOwner,
   addParking,
   addCommentToParking,
+  addImageToParking
 };
