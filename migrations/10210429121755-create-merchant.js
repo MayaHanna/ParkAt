@@ -9,8 +9,6 @@ module.exports = {
       },
       merchantId: {
         type: Sequelize.STRING(200),
-        allowNull: false,
-        unique: true,
       },
       userEmailAddress: {
         type: Sequelize.STRING,
