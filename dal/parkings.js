@@ -1,8 +1,31 @@
 const Parkings = require("../Models/Parking");
-const Slot = require("../models/Slot");
-const Comment = require("../models/ParkingComment");
 
-const { getCommentsByParkingId } = require("./comments");
+const { getCommentsByParkingId, addComment } = require("./comments");
+const { getImagesPathsByParkingId, addImagePath } = require("./imagesPaths");
+const Merchant = require("../Models/merchant");
+
+const getParkingResult = (parkings, comments, imagesPaths) => {
+  return parkings.map((parking) => ({
+    ...parking.dataValues,
+    location: { lat: parking.lat, lng: parking.lng },
+    comments:
+      comments.filter((parkingCommentsArray) => {
+        if (parkingCommentsArray[0]) {
+          if (parkingCommentsArray[0].parkingId === parking.id) {
+            return parkingCommentsArray;
+          }
+        }
+      })[0] || [],
+    imagesPaths:
+      imagesPaths.filter((parkingImagesPathsArray) => {
+        if (parkingImagesPathsArray[0]) {
+          if (parkingImagesPathsArray[0].parkingId === parking.id) {
+            return parkingImagesPathsArray;
+          }
+        }
+      })[0] || [],
+  }));
+};
 
 const getParkings = async () => {
   try {
@@ -10,47 +33,39 @@ const getParkings = async () => {
     let comments = parkings.map(
       async (parking) => await getCommentsByParkingId(parking.id)
     );
+
+    let imagesPaths = parkings.map(
+      async (parking) => await getImagesPathsByParkingId(parking.id)
+    );
+
     comments = await Promise.all(comments);
-    let result = parkings.map((parking) => ({
-      ...parking.dataValues,
-      location: { lat: parking.lat, lng: parking.lng },
-      comments:
-        comments.filter((parkingCommentsArray) => {
-          if (parkingCommentsArray[0]) {
-            if (parkingCommentsArray[0].parkingId === parking.id) {
-              return parkingCommentsArray;
-            }
-          }
-        })[0] || [],
-    }));
-    return result;
+    imagesPaths = await Promise.all(imagesPaths);
+
+    return getParkingResult(parkings, comments, imagesPaths);
   } catch (error) {
     return error;
   }
 };
 
-const getParkingsByOwner = async (ownerId) => {
+const getParkingsByOwner = async (ownerEmailAddress) => {
   try {
     const parkings = await Parkings.findAll({
       where: {
-        owner: ownerId,
+        owner: ownerEmailAddress,
       },
     });
     let comments = parkings.map(
       async (parking) => await getCommentsByParkingId(parking.id)
     );
+
+    let imagesPaths = parkings.map(
+      async (parking) => await getImagesPathsByParkingId(parking.id)
+    );
+
     comments = await Promise.all(comments);
-    let result = parkings.map((parking) => ({
-      ...parking.dataValues,
-      location: { lat: parking.lat, lng: parking.lng },
-      comments: comments.filter((parkingCommentsArray) => {
-        if (parkingCommentsArray[0])
-          if (parkingCommentsArray[0].parkingId === parking.id) {
-            return { ...parkingCommentsArray };
-          }
-      })[0],
-    }));
-    return result;
+    imagesPaths = await Promise.all(imagesPaths);
+
+    return getParkingResult(parkings, comments, imagesPaths);
   } catch (error) {
     callback(error);
   }
@@ -77,13 +92,7 @@ const addParking = async (newParking) => {
 
 const addCommentToParking = async (parkingId, comment) => {
   try {
-    Comment.create({
-      content: comment.content,
-      rating: Number(comment.rating),
-      publisher: comment.publisherName,
-      parkingId: parkingId,
-      publisher: comment.publisher,
-    });
+    addComment(parkingId, comment);
   } catch (error) {
     callback(error);
   }
@@ -91,10 +100,7 @@ const addCommentToParking = async (parkingId, comment) => {
 
 const addImageToParking = async (parkingId, imagePath) => {
   try {
-    await Slot.create({
-      imagePath: imagePath,
-      parkingId: parkingId,
-    });
+    addImagePath(parkingId, imagePath);
   } catch (error) {
     callback(error);
   }

@@ -13,9 +13,9 @@ const getParkingsS = async () => {
   }
 };
 
-const getParkingsByOwnerS = async (ownerId) => {
+const getParkingsByOwnerS = async (ownerEmailAddress) => {
   try {
-    return getParkingsByOwner(ownerId);
+    return getParkingsByOwner(ownerEmailAddress);
   } catch (error) {
     return error;
   }
