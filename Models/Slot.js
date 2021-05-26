@@ -10,12 +10,12 @@ const Slot = db.define("slots", {
   },
   start: Sequelize.DATE,
   end: Sequelize.DATE,
-  publicParkingOffer: Sequelize.INTEGER,
+  publicParkingOfferId: Sequelize.INTEGER,
   incomingUser: Sequelize.INTEGER,
 });
 
 Slot.associate = (models) => {
-  // PublicParkingOffer
+  // PublicParkingOfferId
   Slot.belongsTo(models.PublicParkingOffer, {
     foreignKey: {
       allowNull: false,
