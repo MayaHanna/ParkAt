@@ -11,7 +11,7 @@ module.exports = {
         },
         allowNull: false,
       }),
-      queryInterface.addColumn("slots", "publicParkingOffer", {
+      queryInterface.addColumn("slots", "publicParkingOfferId", {
         type: Sequelize.INTEGER(11),
         references: {
           model: "parking_offers",
@@ -24,7 +24,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     return [
       queryInterface.removeColumn("slots", "incomingUser"),
-      queryInterface.removeColumn("slots", "publicParkingOffer"),
+      queryInterface.removeColumn("slots", "publicParkingOfferId"),
     ];
   },
 };

@@ -1,4 +1,5 @@
 const Parkings = require("../Models/Parking");
+const Slot = require("../models/Slot");
 const { getCommentsByParkingId } = require("./comments");
 
 const getParkings = async () => {
@@ -58,7 +59,6 @@ const getParkingsByOwner = async (ownerId) => {
 
 const addParking = async (newParking) => {
   try {
-    console.log(newParking);
     let returnedParking = "";
     returnedParking = await Parkings.create({
       isPrivate: newParking.isPrivate,
@@ -95,16 +95,10 @@ const addCommentToParking = async (parkingId, comment) => {
 
 const addImageToParking = async (parkingId, imagePath) => {
   try {
-    await Parkings.update(
-      {
-        imagesPaths: Sequelize.fn(
-          "array_append",
-          Sequelize.col("imagesPaths"),
-          imagePath
-        ),
-      },
-      { where: { id: parkingId } }
-    );
+    await Slot.create({
+      imagePath: imagePath,
+      parkingId: parkingId,
+    });
   } catch (error) {
     callback(error);
   }
@@ -114,5 +108,5 @@ module.exports = {
   getParkingsByOwner,
   addParking,
   addCommentToParking,
-  addImageToParking
+  addImageToParking,
 };

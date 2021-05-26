@@ -3,7 +3,7 @@ const {
   getParkingsByOwnerS,
   addParkingS,
   addCommentToParkingS,
-  addImageToParkingS
+  addImageToParkingS,
 } = require("../Services/parkings");
 
 const router = require("express").Router();
@@ -53,7 +53,7 @@ router.post("/comment", async (req, res) => {
 });
 
 router.post("/image", async (req, res) => {
-  const imagePath = req.body.imagePath;
+  const imagePath = req.body.imageUrl;
   const parkingId = req.body.parkingId;
 
   try {
