@@ -30,7 +30,7 @@ const getParkingOffers = async () => {
 };
 const addParkingOffer = async (newParkingOffer) => {
   try {
-    await PrivateParkingOffer.create({
+    let createResult = await PrivateParkingOffer.create({
       price: newParkingOffer.price,
       start: newParkingOffer.start,
       end: newParkingOffer.end,
@@ -40,7 +40,7 @@ const addParkingOffer = async (newParkingOffer) => {
       owner: newParkingOffer.owner,
       isPrivate: newParkingOffer.isPrivate,
     });
-    await addSlots(newParkingOffer.slots);
+    await addSlots(newParkingOffer.slots, createResult.id);
   } catch (error) {
     console.log(error);
     return error;

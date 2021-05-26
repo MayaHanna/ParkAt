@@ -18,6 +18,7 @@ module.exports = {
       },
       lat: Sequelize.FLOAT,
       lng: Sequelize.FLOAT,
+      imagesPaths: Sequelize.ARRAY(Sequelize.STRING),
       // status: {
       //   type: Sequelize.ENUM,
       //   values: ["free", "taken", "unknown"],

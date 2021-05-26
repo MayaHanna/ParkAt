@@ -23,6 +23,7 @@ const Parking = db.define("parkings", {
   //   values: ["free", "taken", "unknown"],
   // },
   owner: Sequelize.STRING,
+  imagesPaths: Sequelize.ARRAY(Sequelize.STRING),
 });
 
 Parking.associate = (models) => {
