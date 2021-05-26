@@ -22,9 +22,10 @@ const getSlots = async () => {
   }
 };
 
-const addSlots = async (slots) => {
+const addSlots = async (slots, publicParkingId) => {
   try {
-    Slot.bulkCreate(slots);
+    let newSlots = slots.map(slot => {return {...slot, publicParkingId: publicParkingOffer}})
+    Slot.bulkCreate(newSlots);
   } catch (error) {
     return error;
   }

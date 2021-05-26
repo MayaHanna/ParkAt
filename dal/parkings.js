@@ -93,9 +93,26 @@ const addCommentToParking = async (parkingId, comment) => {
   }
 };
 
+const addImageToParking = async (parkingId, imagePath) => {
+  try {
+    await Parkings.update(
+      {
+        imagesPaths: Sequelize.fn(
+          "array_append",
+          Sequelize.col("imagesPaths"),
+          imagePath
+        ),
+      },
+      { where: { id: parkingId } }
+    );
+  } catch (error) {
+    callback(error);
+  }
+};
 module.exports = {
   getParkings,
   getParkingsByOwner,
   addParking,
   addCommentToParking,
+  addImageToParking
 };

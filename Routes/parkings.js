@@ -3,6 +3,7 @@ const {
   getParkingsByOwnerS,
   addParkingS,
   addCommentToParkingS,
+  addImageToParkingS
 } = require("../Services/parkings");
 
 const router = require("express").Router();
@@ -45,6 +46,18 @@ router.post("/comment", async (req, res) => {
 
   try {
     await addCommentToParkingS(parkingId, comment);
+    res.status(200).send();
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+router.post("/image", async (req, res) => {
+  const imagePath = req.body.imagePath;
+  const parkingId = req.body.parkingId;
+
+  try {
+    await addImageToParkingS(parkingId, imagePath);
     res.status(200).send();
   } catch (e) {
     res.status(400).send(e);

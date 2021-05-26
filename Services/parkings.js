@@ -36,10 +36,18 @@ const addCommentToParkingS = async (parkingId, comment) => {
     return error;
   }
 };
+const addImageToParkingS = async (parkingId, imagePath) => {
+  try {
+    return addImageToParkingS(parkingId, imagePath);
+  } catch (error) {
+    return error;
+  }
+};
 
 module.exports = {
   getParkingsS,
   getParkingsByOwnerS,
   addParkingS,
   addCommentToParkingS,
+  addImageToParkingS
 };
