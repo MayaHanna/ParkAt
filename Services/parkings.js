@@ -49,5 +49,5 @@ module.exports = {
   getParkingsByOwnerS,
   addParkingS,
   addCommentToParkingS,
-  addImageToParkingS
+  addImageToParkingS,
 };

@@ -1,5 +1,7 @@
 const Parkings = require("../Models/Parking");
 const Slot = require("../models/Slot");
+const Comment = require("../models/ParkingComment");
+
 const { getCommentsByParkingId } = require("./comments");
 
 const getParkings = async () => {
@@ -12,17 +14,14 @@ const getParkings = async () => {
     let result = parkings.map((parking) => ({
       ...parking.dataValues,
       location: { lat: parking.lat, lng: parking.lng },
-      comments: comments.map((parkingCommentsArray) => {
-        if (parkingCommentsArray[0]) {
-          if (parkingCommentsArray[0].parkingId === parking.id) {
-            return [...parkingCommentsArray];
-          } else {
-            return [];
+      comments:
+        comments.filter((parkingCommentsArray) => {
+          if (parkingCommentsArray[0]) {
+            if (parkingCommentsArray[0].parkingId === parking.id) {
+              return parkingCommentsArray;
+            }
           }
-        } else {
-          return [];
-        }
-      })[0],
+        })[0] || [],
     }));
     return result;
   } catch (error) {
@@ -78,16 +77,13 @@ const addParking = async (newParking) => {
 
 const addCommentToParking = async (parkingId, comment) => {
   try {
-    await Parkings.update(
-      {
-        comments: Sequelize.fn(
-          "array_append",
-          Sequelize.col("comments"),
-          comment
-        ),
-      },
-      { where: { id: parkingId } }
-    );
+    Comment.create({
+      content: comment.content,
+      rating: Number(comment.rating),
+      publisher: comment.publisherName,
+      parkingId: parkingId,
+      publisher: comment.publisher,
+    });
   } catch (error) {
     callback(error);
   }
