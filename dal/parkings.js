@@ -98,9 +98,9 @@ const addCommentToParking = async (parkingId, comment) => {
   }
 };
 
-const addImageToParking = async (parkingId, imagePath) => {
+const addImageToParking = async (parkingId, image) => {
   try {
-    addImagePath(parkingId, imagePath);
+    addImagePath(parkingId, image);
   } catch (error) {
     callback(error);
   }

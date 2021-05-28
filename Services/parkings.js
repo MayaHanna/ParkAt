@@ -37,17 +37,9 @@ const addCommentToParkingS = async (parkingId, comment) => {
     return error;
   }
 };
-const addImageToParkingS = async (parkingId, imagePath) => {
+const addImageToParkingS = async (parkingId, image) => {
   try {
-    return addImageToParkingS(parkingId, imagePath);
-  } catch (error) {
-    return error;
-  }
-};
-
-const addImageToParkingS = async (parkingId, imageUrl) => {
-  try {
-    return addImageToParking(parkingId, comment);
+    return addImageToParking(parkingId, image);
   } catch (error) {
     return error;
   }

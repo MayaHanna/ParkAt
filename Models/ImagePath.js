@@ -10,6 +10,7 @@ const ImagePath = db.define("images_paths", {
   },
   imagePath: Sequelize.STRING,
   parkingId: Sequelize.INTEGER,
+  publisherName: Sequelize.STRING,
 });
 
 ImagePath.associate = (models) => {
@@ -18,6 +19,13 @@ ImagePath.associate = (models) => {
     foreignKey: {
       allowNull: false,
     },
+  });
+  // publisher
+  ImagePath.belongsTo(models.Merchant, {
+    foreignKey: {
+      allowNull: false,
+    },
+    targetKey: "userEmailAddress",
   });
 };
 
