@@ -53,11 +53,11 @@ router.post("/comment", async (req, res) => {
 });
 
 router.post("/image", async (req, res) => {
-  const imageUrl = req.body.imageUrl;
+  const imagePath = req.body.imageUrl;
   const parkingId = req.body.parkingId;
 
   try {
-    await addImageToParkingS(parkingId, imageUrl);
+    await addImageToParkingS(parkingId, imagePath);
     res.status(200).send();
   } catch (e) {
     res.status(400).send(e);

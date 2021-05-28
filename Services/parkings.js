@@ -14,9 +14,9 @@ const getParkingsS = async () => {
   }
 };
 
-const getParkingsByOwnerS = async (ownerId) => {
+const getParkingsByOwnerS = async (ownerEmailAddress) => {
   try {
-    return getParkingsByOwner(ownerId);
+    return getParkingsByOwner(ownerEmailAddress);
   } catch (error) {
     return error;
   }
@@ -33,6 +33,13 @@ const addParkingS = async (newParking) => {
 const addCommentToParkingS = async (parkingId, comment) => {
   try {
     return addCommentToParking(parkingId, comment);
+  } catch (error) {
+    return error;
+  }
+};
+const addImageToParkingS = async (parkingId, imagePath) => {
+  try {
+    return addImageToParkingS(parkingId, imagePath);
   } catch (error) {
     return error;
   }

@@ -12,7 +12,21 @@ const getCommentsByParkingId = async (parkingId) => {
     return error;
   }
 };
+const addComment = async (parkingId, comment) => {
+  try {
+    Comment.create({
+      content: comment.content,
+      rating: Number(comment.rating),
+      publisher: comment.publisherName,
+      parkingId: parkingId,
+      publisher: comment.publisher,
+    });
+  } catch (error) {
+    return error;
+  }
+};
 
 module.exports = {
   getCommentsByParkingId,
+  addComment,
 };
