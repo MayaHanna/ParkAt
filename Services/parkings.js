@@ -3,6 +3,7 @@ const {
   getParkingsByOwner,
   addParking,
   addCommentToParking,
+  addImageToParking,
 } = require("../dal/parkings");
 
 const getParkingsS = async () => {
@@ -36,9 +37,9 @@ const addCommentToParkingS = async (parkingId, comment) => {
     return error;
   }
 };
-const addImageToParkingS = async (parkingId, imagePath) => {
+const addImageToParkingS = async (parkingId, image) => {
   try {
-    return addImageToParkingS(parkingId, imagePath);
+    return addImageToParking(parkingId, image);
   } catch (error) {
     return error;
   }

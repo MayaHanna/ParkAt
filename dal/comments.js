@@ -16,8 +16,8 @@ const addComment = async (parkingId, comment) => {
   try {
     Comment.create({
       content: comment.content,
-      rating: Number(comment.rating),
-      publisher: comment.publisherName,
+      rating: comment.rating ? Number(comment.rating) : undefined,
+      publisherName: comment.publisherName,
       parkingId: parkingId,
       publisher: comment.publisher,
     });
