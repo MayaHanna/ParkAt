@@ -10,6 +10,7 @@ module.exports = {
         autoIncrement: true,
       },
       imagePath: Sequelize.STRING,
+      publisherName: Sequelize.STRING,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });

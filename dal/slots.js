@@ -4,7 +4,7 @@ const getSlotsByParkingOfferId = async (parkingOfferId) => {
   try {
     const slots = await Slot.findAll({
       where: {
-        publicParkingOffer: parkingOfferId,
+        publicParkingOfferId: parkingOfferId,
       },
     });
     return slots;
@@ -27,7 +27,8 @@ const addSlots = async (slots, publicParkingOfferId) => {
     let newSlots = slots.map((slot) => {
       return { ...slot, publicParkingOfferId: publicParkingOfferId };
     });
-    Slot.bulkCreate(newSlots);
+    result = await Slot.bulkCreate(newSlots);
+    console.log(res);
   } catch (error) {
     return error;
   }

@@ -9,7 +9,7 @@ module.exports = {
           model: "merchants",
           key: "userEmailAddress",
         },
-        allowNull: false,
+        allowNull: true,
       }),
       queryInterface.addColumn("slots", "publicParkingOfferId", {
         type: Sequelize.INTEGER(11),

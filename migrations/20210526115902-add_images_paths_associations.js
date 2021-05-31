@@ -11,6 +11,14 @@ module.exports = {
         },
         allowNull: false,
       }),
+      queryInterface.addColumn("images_paths", "publisher", {
+        type: Sequelize.STRING,
+        references: {
+          model: "merchants",
+          key: "userEmailAddress",
+        },
+        allowNull: false,
+      }),
     ];
   },
 
