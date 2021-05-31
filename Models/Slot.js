@@ -1,7 +1,5 @@
 const Sequelize = require("sequelize");
 const db = require("../database/connection");
-const PublicParkingOffer = require("./PublicParkingOffer");
-const User = require("./User");
 
 const Slot = db.define("slots", {
   id: {
@@ -12,21 +10,13 @@ const Slot = db.define("slots", {
   },
   start: Sequelize.DATE,
   end: Sequelize.DATE,
-  identification_code: Sequelize.INTEGER(10),
-  publicParkingOffer: Sequelize.INTEGER,
-  outgoingUser: Sequelize.INTEGER,
+  publicParkingOfferId: Sequelize.INTEGER,
   incomingUser: Sequelize.INTEGER,
 });
 
 Slot.associate = (models) => {
-  // PublicParkingOffer
+  // PublicParkingOfferId
   Slot.belongsTo(models.PublicParkingOffer, {
-    foreignKey: {
-      allowNull: false,
-    },
-  });
-  // Outgoing
-  Slot.belongsTo(models.User, {
     foreignKey: {
       allowNull: false,
     },
