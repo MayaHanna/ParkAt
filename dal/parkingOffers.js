@@ -40,6 +40,8 @@ const addParkingOffer = async (newParkingOffer) => {
     });
     if (newParkingOffer.slots)
       await addSlots(newParkingOffer.slots, createResult.id);
+
+    return createResult.dataValues;
   } catch (error) {
     console.log(error);
     return error;

@@ -22,8 +22,8 @@ router.post("/", async (req, res) => {
   };
 
   try {
-    await addParkingOfferS(newParkingOffer);
-    res.status(200).send();
+    const result = await addParkingOfferS(newParkingOffer);
+    res.status(200).send(result);
   } catch (e) {
     res.status(400).send("Error");
   }
