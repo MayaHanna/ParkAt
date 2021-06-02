@@ -1,4 +1,4 @@
-const FreeParkingReport = require("../models/FreeParkingReport");
+const FreeParkingReport = require("../Models/FreeParkingReport");
 
 const getParkingReports = async () => {
   try {
@@ -9,10 +9,11 @@ const getParkingReports = async () => {
   }
 };
 const addParkingReport = async (newParkingReport) => {
+  console.log(newParkingReport);
   try {
     await FreeParkingReport.create({
       time: newParkingReport.time,
-      parkingId: newParkingReport.id,
+      parkingId: newParkingReport.parkingId,
     });
   } catch (error) {
     return error;

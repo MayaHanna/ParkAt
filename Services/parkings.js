@@ -3,6 +3,7 @@ const {
   getParkingsByOwner,
   addParking,
   addCommentToParking,
+  addImageToParking,
 } = require("../dal/parkings");
 
 const getParkingsS = async () => {
@@ -13,9 +14,9 @@ const getParkingsS = async () => {
   }
 };
 
-const getParkingsByOwnerS = async (ownerId) => {
+const getParkingsByOwnerS = async (ownerEmailAddress) => {
   try {
-    return getParkingsByOwner(ownerId);
+    return getParkingsByOwner(ownerEmailAddress);
   } catch (error) {
     return error;
   }
@@ -36,10 +37,18 @@ const addCommentToParkingS = async (parkingId, comment) => {
     return error;
   }
 };
+const addImageToParkingS = async (parkingId, image) => {
+  try {
+    return addImageToParking(parkingId, image);
+  } catch (error) {
+    return error;
+  }
+};
 
 module.exports = {
   getParkingsS,
   getParkingsByOwnerS,
   addParkingS,
   addCommentToParkingS,
+  addImageToParkingS,
 };

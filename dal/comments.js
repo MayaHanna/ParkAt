@@ -1,4 +1,4 @@
-const Comment = require("../models/ParkingComment");
+const Comment = require("../Models/ParkingComment");
 
 const getCommentsByParkingId = async (parkingId) => {
   try {
@@ -12,7 +12,21 @@ const getCommentsByParkingId = async (parkingId) => {
     return error;
   }
 };
+const addComment = async (parkingId, comment) => {
+  try {
+    Comment.create({
+      content: comment.content,
+      rating: comment.rating ? Number(comment.rating) : undefined,
+      publisherName: comment.publisherName,
+      parkingId: parkingId,
+      publisher: comment.publisher,
+    });
+  } catch (error) {
+    return error;
+  }
+};
 
 module.exports = {
   getCommentsByParkingId,
+  addComment,
 };

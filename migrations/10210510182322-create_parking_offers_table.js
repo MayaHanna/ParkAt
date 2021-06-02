@@ -2,24 +2,25 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable("private_parking_offers", {
+    return queryInterface.createTable("parking_offers", {
       id: {
         type: Sequelize.INTEGER(11),
         primaryKey: true,
         allowNull: false,
         autoIncrement: true,
       },
-      price: Sequelize.INTEGER(10),
+      price: Sequelize.INTEGER,
       start: Sequelize.TIME,
       end: Sequelize.TIME,
-      //status: closed/open
       status: Sequelize.STRING,
+      isPrivate: Sequelize.BOOLEAN,
+      canBePermanent: Sequelize.BOOLEAN,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("private_parking_offers");
+    return queryInterface.dropTable("parking_offers");
   },
 };

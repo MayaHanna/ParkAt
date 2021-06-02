@@ -2,13 +2,13 @@ const { getMerchantIdByUserS } = require("../Services/merchants");
 const { addPointsToMerchant } = require("../Controllers/merchants");
 const { editMerchant } = require("../Controllers/merchants");
 const { addMerchant } = require("../Controllers/merchants");
-const { getMerchantIdByUser } = require("../Controllers/merchants");
+const { getMerchantByUser } = require("../Controllers/merchants");
 
 const router = require("express").Router();
 
 router.get("/byUser/:userMailAdress", async (req, res) => {
   try {
-    const merchants = await getMerchantIdByUserS(req.params.userMailAdress);
+    const merchants = await getMerchantByUser(req.params.userMailAdress);
     res.status(200).send(merchants);
   } catch (e) {
     res.status(400).send("Error");
@@ -47,7 +47,7 @@ router.put("/", async (req, res) => {
 
   try {
     const newMerchantAfterEdit = await editMerchant(
-      req.body.formData.userMail,
+      req.body.formData.userEmailAddress,
       newMerchant
     );
     res.status(200).send(newMerchantAfterEdit);

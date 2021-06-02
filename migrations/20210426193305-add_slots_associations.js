@@ -3,35 +3,28 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return [
-      queryInterface.addColumn("slots", "outgoingUser", {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "users",
-          key: "id",
-        },
-      }),
       queryInterface.addColumn("slots", "incomingUser", {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         references: {
-          model: "users",
-          key: "id",
+          model: "merchants",
+          key: "userEmailAddress",
         },
+        allowNull: true,
       }),
-      queryInterface.addColumn("slots", "publicParkingOffer", {
-        type: Sequelize.INTEGER,
+      queryInterface.addColumn("slots", "publicParkingOfferId", {
+        type: Sequelize.INTEGER(11),
         references: {
-          model: "public_parking_offers",
-          key: "id",
+          model: "parking_offers",
         },
+        allowNull: false,
       }),
     ];
   },
 
   down: async (queryInterface, Sequelize) => {
     return [
-      queryInterface.removeColumn("slots", "outgoingUser"),
       queryInterface.removeColumn("slots", "incomingUser"),
-      queryInterface.removeColumn("slots", "publicParkingOffer"),
+      queryInterface.removeColumn("slots", "publicParkingOfferId"),
     ];
   },
 };

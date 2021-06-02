@@ -16,10 +16,8 @@ module.exports = {
         type: Sequelize.ENUM,
         values: ["Small", "Big"],
       },
-      // status: {
-      //   type: Sequelize.ENUM,
-      //   values: ["free", "taken", "unknown"],
-      // },
+      lat: Sequelize.FLOAT,
+      lng: Sequelize.FLOAT,
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
     });
