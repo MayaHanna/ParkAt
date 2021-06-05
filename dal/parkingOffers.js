@@ -1,7 +1,7 @@
 const PrivateParkingOffer = require("../Models/ParkingOffer");
 const { getMerchantIdByUser } = require("./merchants");
 const { getSlotsByParkingOfferId, addSlots } = require("./slots");
-
+const moment = require("moment");
 
 const getParkingOffers = async () => {
   try {
@@ -24,14 +24,18 @@ const getParkingOffers = async () => {
   } catch (error) {
     return error;
   }
-}
+};
 
 const addParkingOffer = async (newParkingOffer) => {
+
+  const startDate = moment(newParkingOffer.start).format("YYYY-MM-DD HH:mm:ss.SSS");
+  const endDate = moment(newParkingOffer.end).format("YYYY-MM-DD HH:mm:ss.SSS");
+
   try {
     let createResult = await PrivateParkingOffer.create({
       price: newParkingOffer.price,
-      start: newParkingOffer.start,
-      end: newParkingOffer.end,
+      start: startDate,
+      end: endDate,
       status: newParkingOffer.status,
       parkingId: newParkingOffer.parkingId,
       canBePermanent: newParkingOffer.canBePermanent,
