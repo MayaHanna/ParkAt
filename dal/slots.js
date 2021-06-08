@@ -1,4 +1,4 @@
-const Slot = require("../models/Slot");
+const Slot = require("../Models/slot");
 
 const getSlotsByParkingOfferId = async (parkingOfferId) => {
   try {
