@@ -19,7 +19,7 @@ const addMerchantData = async (newMerchant) => {
     return await Merchant.create({
       merchantId: newMerchant.merchantId,
       userEmailAddress: newMerchant.userEmailAddress,
-      points: newMerchant.points
+      points: newMerchant.points,
     });
   } catch (error) {
     return error;
@@ -28,12 +28,10 @@ const addMerchantData = async (newMerchant) => {
 
 const addPointsToMerchantData = async (userMail, pointsToAdd) => {
   try {
-    const user = await Merchant.findAll({
-      where: {
-        userEmailAddress: userMail,
-      },
+    return await Merchant.increment("points", {
+      by: pointsToAdd,
+      where: { userEmailAddress: userMail },
     });
-    return await user.increment({ points: pointsToAdd });
   } catch (error) {
     return error;
   }

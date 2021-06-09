@@ -11,6 +11,7 @@ const ImagePath = db.define("images_paths", {
   imagePath: Sequelize.STRING,
   parkingId: Sequelize.INTEGER,
   publisherName: Sequelize.STRING,
+  publisher: Sequelize.STRING,
 });
 
 ImagePath.associate = (models) => {
