@@ -36,12 +36,9 @@ const addSlots = async (slots, publicParkingOfferId) => {
 
 const updateSlots = async (newSlots) => {
   try {
-    newSlots?.map(async currSlot => {
-      await Slot.update(
-        { ...currSlot },
-        { where: { id: currSlot.id } }
-      );
-    })
+    newSlots.map(async (currSlot) => {
+      await Slot.update({ ...currSlot }, { where: { id: currSlot.id } });
+    });
   } catch (error) {
     return error;
   }
@@ -51,5 +48,5 @@ module.exports = {
   getSlotsByParkingOfferId,
   addSlots,
   getSlots,
-  updateSlots
+  updateSlots,
 };

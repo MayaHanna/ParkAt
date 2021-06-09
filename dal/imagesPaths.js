@@ -15,14 +15,16 @@ const getImagesPathsByParkingId = async (parkingId) => {
 
 const addImagePath = async (parkingId, image) => {
   try {
-    ImagePath.create({
+    let newImagePath = {
       imagePath: image.imagePath,
       parkingId: parkingId,
       publisher: image.publisher,
       publisherName: image.publisherName,
       createdAt: Date.now(),
       updatedAt: Date.now(),
-    });
+    };
+
+    ImagePath.create(newImagePath);
   } catch (error) {
     return error;
   }

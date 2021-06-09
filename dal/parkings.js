@@ -2,7 +2,6 @@ const Parkings = require("../Models/Parking");
 
 const { getCommentsByParkingId, addComment } = require("./comments");
 const { getImagesPathsByParkingId, addImagePath } = require("./imagesPaths");
-const Merchant = require("../Models/merchant");
 
 const getParkingResult = (parkings, comments, imagesPaths) => {
   return parkings.map((parking) => ({
