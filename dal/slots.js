@@ -36,7 +36,7 @@ const addSlots = async (slots, publicParkingOfferId) => {
 
 const updateSlots = async (newSlots) => {
   try {
-    newSlots.map(async currSlot => {
+    newSlots?.map(async currSlot => {
       await Slot.update(
         { ...currSlot },
         { where: { id: currSlot.id } }

@@ -60,6 +60,8 @@ const editParkingOffer = async (parkingOfferId, newParkingOffer) => {
         end: newParkingOffer.end,
         canBePermanent: newParkingOffer.canBePermanent,
         merchantId: newParkingOffer.merchantId,
+        status: newParkingOffer.status,
+        client: newParkingOffer.client,
       },
       { where: { id: parkingOfferId } }
     );
