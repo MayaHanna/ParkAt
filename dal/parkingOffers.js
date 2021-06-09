@@ -1,6 +1,6 @@
 const PrivateParkingOffer = require("../Models/ParkingOffer");
 const { getMerchantIdByUser } = require("./merchants");
-const { getSlotsByParkingOfferId, addSlots } = require("./slots");
+const { getSlotsByParkingOfferId, addSlots, updateSlots } = require("./slots");
 const moment = require("moment");
 
 const getParkingOffers = async () => {
@@ -63,6 +63,8 @@ const editParkingOffer = async (parkingOfferId, newParkingOffer) => {
       },
       { where: { id: parkingOfferId } }
     );
+
+    await updateSlots(newParkingOffer.slots);
   } catch (error) {
     return error;
   }
